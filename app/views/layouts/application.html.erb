@@ -1,14 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>BmiAssessment</title>
-  <%= stylesheet_link_tag    "application" %>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Business Model Institute</title>
+  <meta name="description" content="" />
+  <meta name="author" content="Mojo Media Labs" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="author" href="humans.txt" />
+  <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div id="container">
+    <header id="main-header">
+      <h1>Business Model Institute</h1>
+    </header>
+    <% if flash[:notice] %>
+      <div id="flash-notice" class="notification <%= flash[:type] %> click-to-close">
+        <div><%= raw flash[:notice] %></div>
+      </div>
+    <% end %>
+    <% if flash[:debug] %>
+      <div id="flash-debug" class="notification information click-to-close">
+        <div><%= raw debug flash[:debug] %></div>
+      </div>
+    <% end %>
+    <nav id="main-nav">
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <% Page.top_level.order("display_order").each do |page| %>
+          <li><%= link_to page.title, page %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div id="content">
+      <%= yield %>
+    </div>
+  </div>
+  <footer id="main-footer">
+    Content copyright &copy; <%= Time.now.year %> Business Model Institute. All Rights Reserved.<br />
+    Created with <a href="http://rubyonrails.org/">Ruby on Rails</a> by <a href="http://mojomedialabs.com/">Mojo Media Labs</a>.<br />
+    <!-- Change this out so the login is near the top and is nice and big -->
+    <!-- Might want to make it so that when regular users get logged in they get redirected to the
+    assessment view and admins get redirected to the admin view. -->
+    <% unless @current_user %>
+      <%= link_to "Login", login_path %>
+    <% else %>
+      <%= link_to "Logout", logout_path %>
+      <% if @current_user.privilege_level >= User::PrivilegeLevelAdmin %>
+        | <%= link_to "Admin Panel", admin_root_path %>
+      <% end %>
+    <% end %>
+  </footer>
 </body>
 </html>

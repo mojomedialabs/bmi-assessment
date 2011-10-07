@@ -3,3 +3,8 @@ db/*.sqlite3
 log/*.log
 tmp/
 .sass-cache/
+public/uploads/
+public/images/icons/
+public/images/notifications/
+app/assets/images/icons/
+app/assets/images/notifications/
