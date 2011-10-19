@@ -20,7 +20,7 @@
 <body>
   <div class="container">
     <header>
-      <h1 class="logo">Admin Panel</h1>
+      <h1 class="logo">BMI Admin Panel</h1>
       <p class="controls">Logged in as <strong><%= link_to "#{@current_user.first_name} #{@current_user.last_name}", edit_admin_user_path(@current_user) %></strong><span class="v-line"> | </span><%= link_to "Logout", logout_path %></p>
       <nav id="main">
         <ul>
