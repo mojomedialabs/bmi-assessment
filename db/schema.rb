@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111006212121) do
+ActiveRecord::Schema.define(:version => 20111020222106) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id",                  :null => false
+    t.text     "content",                      :null => false
+    t.integer  "weight",        :default => 1, :null => false
+    t.integer  "display_order", :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pages", :force => true do |t|
     t.text     "title",                               :null => false
@@ -47,6 +56,34 @@ ActiveRecord::Schema.define(:version => 20111006212121) do
     t.integer  "user_id",                             :null => false
     t.integer  "status",           :default => 1,     :null => false
     t.boolean  "private",          :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.integer  "section_id",                   :null => false
+    t.text     "content",                      :null => false
+    t.integer  "display_order", :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sections", :force => true do |t|
+    t.integer  "survey_id",                    :null => false
+    t.text     "title",                        :null => false
+    t.string   "slug",                         :null => false
+    t.text     "description"
+    t.integer  "display_order", :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "surveys", :force => true do |t|
+    t.text     "title",                        :null => false
+    t.string   "slug",                         :null => false
+    t.text     "description"
+    t.integer  "display_order", :default => 0, :null => false
+    t.integer  "status",        :default => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

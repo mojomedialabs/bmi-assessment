@@ -36,7 +36,7 @@ helper_method :sort_column, :sort_order
       if @user.save
         flash[:type] = "success"
 
-        flash[:notice] = t "flash.user.success.created", :user_name => @user.name, :undo_link => undo_link
+        flash[:notice] = t "flash.user.success.created", :user_name => "#{@user.first_name} #{@user.last_name}", :undo_link => undo_link
 
         redirect_to admin_users_url and return
       else

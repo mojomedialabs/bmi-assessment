@@ -1,5 +1,4 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+#English
 
 en:
   flash:
@@ -52,12 +51,25 @@ en:
         could_not_save: "Error: Unable to save the blog post to database!"
         could_not_update: "Error: Unable to save changes to the blog post!"
         could_not_destroy: "Error: Unable to delete the specified blog post!"
-        could_not_find_multiple: "Error: Unable to find one or more of the specified blog post!"
+        could_not_find_multiple: "Error: Unable to find one or more of the specified blog posts!"
         could_not_update_multiple: "The following errors occurred when updating blog post \"%{post_title}\":<br />"
       success:
         created: "Blog post \"%{post_title}\" has been created! %{undo_link}."
         updated: "Blog post \"%{post_title}\" has been updated! %{undo_link}."
         destroyed: "Blog post \"%{post_title}\" has been deleted! %{undo_link}."
+    survey:
+      error:
+        could_not_find: "Error: Unable to find the specified survey!"
+        could_not_create: "Error: Unable to create the survey!"
+        could_not_save: "Error: Unable to save the survey to database!"
+        could_not_update: "Error: Unable to save changes to the survey!"
+        could_not_destroy: "Error: Unable to delete the specified survey!"
+        could_not_find_multiple: "Error: Unable to find one or more of the specified surveys!"
+        could_not_update_multiple: "The following errors occurred when updating survey \"%{survey_title}\":<br />"
+      success:
+        created: "Survey \"%{survey_title}\" has been created! %{undo_link}."
+        updated: "Survey \"%{survey_title}\" has been updated! %{undo_link}."
+        destroyed: "Survey \"%{survey_title}\" has been deleted! %{undo_link}."
     user:
       error:
         could_not_find: "Error: Unable to find the specified user!"

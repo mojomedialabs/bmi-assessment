@@ -15,7 +15,9 @@ BmiAssessment::Application.routes.draw do
 
   resources :sessions, :only => [:new, :create, :destroy]
 
-  resources :users, :except => [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :surveys, :only => [:index, :show]
+
+  #resources :users, :except => [:index, :show, :new, :create, :edit, :update, :destroy]
 
   namespace :admin do
     root :to => 'admin#index'
@@ -41,6 +43,14 @@ BmiAssessment::Application.routes.draw do
     end
 
     resources :users do
+      collection do
+        get :edit_multiple
+        put :update_multiple
+        post :destroy_multiple
+      end
+    end
+
+    resources :surveys do
       collection do
         get :edit_multiple
         put :update_multiple

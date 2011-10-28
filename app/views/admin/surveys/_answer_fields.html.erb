@@ -1,0 +1,14 @@
+<div class="answer">
+  <div class="display-order">
+    <%= image_tag image_path("icons/32x32/up.png"), :alt => "Move Up", :class => "increase-display-order", :title => "Move Down" %><%= image_tag image_path("icons/32x32/down.png"), :alt => "Move Down", :class => "decrease-display-order", :title => "Move Down" %>
+    <%= f.hidden_field :display_order, :class => "display-order-field" %>
+  </div>
+  <div class="remove">
+    <%= image_tag image_path("icons/32x32/remove.png") %>
+    <%= f.hidden_field :_destroy, :alt => "Remove Answer", :class => "remove-field", :title => "Remove Answer" %>
+  </div>
+  <p>
+    <%= f.label :content, "Answer" %><br />
+    <%= f.text_field :content, :class => "medium" %><br />
+  </p>
+</div>

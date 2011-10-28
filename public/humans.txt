@@ -1,6 +1,5 @@
 /* TEAM */
   Company: Mojo Media Labs
-  Contact: carl (at) teamrgc.com
   Site: http://mojomedialabs.com/
   Twitter: @mojomedialabs
   From: Irving, TX, USA
@@ -20,7 +19,7 @@
 
 /* SITE */
   Created On: 2011/10/06
-  Last Updated: 2011/10/06
+  Last Updated: 2011/10/21
   Language: English
   Doctype: HTML5
   Lovingly Made In: Geany 0.20, TextMate 1.5.10 (1631)

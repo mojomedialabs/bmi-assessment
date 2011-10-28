@@ -375,3 +375,51 @@ footer {
 }
 
 /* End Home Page Quick Links */
+
+/* Begin Surveys */
+
+/* Begin New Survey */
+
+.section {
+  border-top: 1px solid #bab9b9;
+  .display-order {
+    cursor: pointer;
+    float: right;
+  }
+  .remove {
+    cursor: pointer;
+    float: right;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  .question:nth-child(odd) {
+    background: #f7f7f7;
+  }
+  .question {
+    margin-left: 10px;
+    .display-order {
+      cursor: pointer;
+      float: right;
+    }
+    .remove {
+      cursor: pointer;
+      float: right;
+    }
+    .answer {
+      margin-left: 10px;
+      .display-order {
+        cursor: pointer;
+        float: right;
+      }
+      .remove {
+        cursor: pointer;
+        float: right;
+      }
+    }
+  }
+}
+
+/* End New Survey */
+
+/* End Surveys */

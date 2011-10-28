@@ -3,7 +3,7 @@
 //= require_self
 
 $(document).ready(function(){
-    $(".click-to-close").click(function() {
+  $(".click-to-close").click(function() {
 		$(this).fadeTo(400, 0, function () {
 			$(this).slideUp(400);
 		});
@@ -59,4 +59,85 @@ $(document).ready(function(){
 
 		$(".toggle-debug-text").toggle();
 	});
+
+  /*function setChildrenDisplayOrder(selector) {
+    console.log(selector);
+
+    $(selector).children().each(function() {
+      console.log(this);
+
+      var fields = $(this).find("> .display-order > .display-order-field");
+
+      console.log(fields);
+
+      $.each(fields, function(index, value) {
+        console.log(index);
+
+        $(this).val(index);
+      });
+    });
+  }*/
+
+  function add_fields(link, association, content) {
+    var newID = new Date().getTime();
+    var regExp = new RegExp("new_" + association, "g");
+
+    $(link).parent().insertBefore(content.replace(regExp, newID));
+  }
+
+  $(".remove img").click(function() {
+    console.log($(this).parent().find(".remove-field"));
+
+    $(this).parent().find(".remove-field").val("true");
+
+    $(this).parent().parent().addClass("deleted-field");
+
+    $(this).parent().parent().slideUp();
+
+    updateDisplayOrders();
+  });
+
+  function updateDisplayOrders() {
+    $(".section").not(".deleted-field").find("> .display-order > .display-order-field").not(".deleted-field").each(function(index, value) {
+      $(this).val(index);
+    });
+
+    $(".section").each(function() {
+      var fields = $(this).find(".question").not(".deleted-field").find("> .display-order > .display-order-field");
+
+      $.each(fields, function(index, value) {
+        $(this).val(index);
+      });
+    });
+
+    $(".question").each(function() {
+      var fields = $(this).find(".answer").not(".deleted-field").find("> .display-order > .display-order-field");
+
+      $.each(fields, function(index, value) {
+        $(this).val(index);
+      });
+    });
+  }
+
+  updateDisplayOrders();
+
+  $(".display-order .increase-display-order").click(function() {
+    var elementClass = $(this).parent().parent().attr("class");
+
+    if ($(this).parent().parent().prev().hasClass(elementClass)) {
+      $(this).parent().parent().insertBefore($(this).parent().parent().prev());
+    }
+
+    updateDisplayOrders();
+  });
+
+  $(".display-order .decrease-display-order").click(function() {
+    var elementClass = $(this).parent().parent().attr("class");
+
+    if ($(this).parent().parent().next().hasClass(elementClass)) {
+      $(this).parent().parent().insertAfter($(this).parent().parent().next());
+    }
+
+    updateDisplayOrders();
+  });
 });
