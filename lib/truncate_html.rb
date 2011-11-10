@@ -1,4 +1,4 @@
-require 'nokogiri'
+require "nokogiri"
 
 def truncate_html(input, num_words = 100, truncate_string = "...")
   doc = Nokogiri::HTML(input)

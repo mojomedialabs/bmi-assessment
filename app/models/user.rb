@@ -1,10 +1,11 @@
-require 'digest/sha2'
-require 'RFC2822'
+require "digest/sha2"
+require "RFC2822"
 
 class User < ActiveRecord::Base
   attr_accessor :password
 
   has_many :posts, :dependent => :destroy
+  has_many :responses
   has_paper_trail
 
   after_initialize :initialize_defaults

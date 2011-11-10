@@ -21,7 +21,11 @@ class SessionsController < ApplicationController
 
       redirect_to root_url and return
     else
-      render :new and return
+      flash[:type] = "error"
+
+      flash[:notice] = t "flash.session.error.login"
+
+      redirect_to root_url and return
     end
   end
 

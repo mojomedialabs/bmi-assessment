@@ -4,3 +4,140 @@
 */
 
 @charset "utf-8";
+
+/* Begin General Link Styles */
+
+a:link, a:visited {
+  color: #daa032;
+}
+
+a:hover, a:focus {
+  color: #d99c31;
+}
+
+a:active {
+  color: #0063ce;
+}
+
+#container {
+  margin: 0 auto;
+  width: 900px;
+}
+
+/* End General Link Styles */
+
+/* Begin Flash Notification */
+
+.notification {
+  background: #f7f7f7;
+  border: 1px solid #bab9b9;
+  cursor: pointer;
+  margin: 32px;
+  min-height: 16px;
+  padding: 10px 15px 10px 62px;
+  text-align: left;
+}
+
+.attention {
+  background: #ffdb91 url('notifications/attention.png') no-repeat 15px center;
+  border: 1px solid #ffc44a;
+}
+
+.success {
+  background: #e2ff7d url('notifications/success.png') no-repeat 15px center;
+  border: 1px solid #99c600;
+}
+
+.error {
+  background: #f5b5a9 url('notifications/error.png') no-repeat 15px center;
+  border: 1px solid #eb5339;
+}
+
+.information {
+  background: #b3cfea url('notifications/information.png') no-repeat 15px center;
+  border: 1px solid #418acc;
+}
+
+.lightbulb {
+  background: #feefcb url('notifications/lightbulb.png') no-repeat 15px center;
+  border: 1px solid #d3a350;
+}
+
+/* End Flash Notification */
+
+header#main-header {
+  /*background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#dedede));
+  background-image: -webkit-linear-gradient(top, #ffffff, #dedede);
+  background-image:    -moz-linear-gradient(top, #ffffff, #dedede);
+  background-image:     -ms-linear-gradient(top, #ffffff, #dedede);
+  background-image:      -o-linear-gradient(top, #ffffff, #dedede);
+  background-image:         linear-gradient(top, #ffffff, #dedede);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#dedede');*/
+  margin-bottom: 20px;
+  overflow: hidden;
+  img#logo {
+    float: left;
+    width: 300px;
+  }
+  nav#main-nav {
+    float: right;
+    margin-top: 30px;
+    ul {
+      list-style: none;
+      li {
+        background: #daa032;
+        float: right;
+        margin: 5px;
+        a {
+          color: #ffffff;
+          display: inline-block;
+          padding: 10px;
+          text-decoration: none;
+        }
+        a:hover, a:focus {
+          color: #8e6210;
+        }
+        a:active {
+          color: #0063ce;
+        }
+      }
+    }
+  }
+}
+
+#login {
+  overflow: hidden;
+  #login-form {
+    background: #11683d;
+    color: #ffffff;
+    float: left;
+    width: 440px;
+    h1 {
+      font-size: 35px;
+      margin: 10px 20px;
+    }
+    .login-field {
+      font-size: 20px;
+      margin: 10px;
+      input[type="text"], input[type="password"] {
+        border: 0;
+      }
+      input[type="submit"] {
+        background: #d99c31;
+        border: 0;
+        color: #ffffff;
+        padding: 5px;
+      }
+    }
+  }
+  #login-image {
+    float: right;
+    width: 440px;
+  }
+}
+
+p#login-intro {
+  font-size: 30px;
+  text-align: justify;
+}

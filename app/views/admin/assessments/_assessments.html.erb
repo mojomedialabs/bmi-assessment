@@ -1,0 +1,48 @@
+<%= form_tag edit_multiple_admin_assessments_path, :id => "assessments-index-form", :method => :get do %>
+<table>
+  <thead>
+    <tr>
+      <th scope="col"><input class="check-all" type="checkbox"></th>
+      <th scope="col"><%= sortable "id", "ID" %></th>
+      <th scope="col"><%= sortable "title" %></th>
+      <th scope="col">Description</th>
+      <th scope="col"><%= sortable "status" %></th>
+      <th scope="col"><%= sortable "created_at" %></th>
+      <th scope="col"><%= sortable "updated_at" %></th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% even_row = false %>
+    <% @assessments.each do |assessment| %>
+      <tr class="<% if even_row %>even<% else %>odd<% end %><% even_row = !even_row %>">
+        <td><%= check_box_tag "assessments_ids[]", assessment.id %></td>
+        <td><%= link_to assessment.id, admin_assessment_path(assessment) %></td>
+        <td><%= link_to assessment.title, admin_assessment_path(assessment) %></td>
+        <td><%= truncate(assessment.description) %></td>
+        <td>
+          <%= case assessment.status
+            when 0
+              "Draft"
+            when 1
+              "Published"
+            when 2
+              "Awaiting Review"
+            else
+              "Unknown"
+            end
+          %>
+        </td>
+        <td><%= assessment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        <td><%= assessment.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        <td>
+          <%= link_to image_tag(image_path("icons/16x16/edit.png"), :title => "Edit", :alt => "Edit"), edit_admin_assessment_path(assessment) %>
+          <%= link_to image_tag(image_path("icons/16x16/remove.png"), :title => "Delete", :alt => "Delete"), admin_assessment_path(assessment), :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= submit_tag "Edit Selected", :class => "button", :disabled => true, :id => "edit-selected-button" %>
+<% end %>
+<%= paginate @assessments %>

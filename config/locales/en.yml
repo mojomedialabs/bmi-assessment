@@ -17,6 +17,10 @@ en:
         login: "Welcome back %{user_name}, thank you for logging in!"
         logout: "You are now logged out."
         change_password: "Please change your password."
+      password_resets:
+        sent_email: "Sent email with password reset instructions."
+        expired: "Password reset has expired."
+        reset: "Your password has been reset."
     page:
       error:
         could_not_find: "Error: Unable to find the specified page!"

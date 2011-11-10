@@ -20,7 +20,21 @@
 <body>
   <div id="container">
     <header id="main-header">
-      <h1>Business Model Institute</h1>
+      <%= link_to image_tag("bmi-logo.png", :id => "logo"), root_path %>
+      <nav id="main-nav">
+        <ul>
+          <% if @current_user %>
+            <li><%= link_to "Logout", logout_path %></li>
+            <% if @current_user.privilege_level >= User::PrivilegeLevelAdmin %>
+              <li><%= link_to "Admin Panel", admin_root_path %></li>
+            <% end %>
+          <% end %>
+          <% Page.top_level.order("display_order").each do |page| %>
+            <li><%= link_to page.title, page %></li>
+          <% end %>
+          <li><%= link_to "Assessments", assessments_path %></li>
+        </ul>
+      </nav>
     </header>
     <% if flash[:notice] %>
       <div id="flash-notice" class="notification <%= flash[:type] %> click-to-close">
@@ -32,32 +46,13 @@
         <div><%= raw debug flash[:debug] %></div>
       </div>
     <% end %>
-    <nav id="main-nav">
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <% Page.top_level.order("display_order").each do |page| %>
-          <li><%= link_to page.title, page %></li>
-        <% end %>
-      </ul>
-    </nav>
     <div id="content">
       <%= yield %>
     </div>
+    <footer id="main-footer">
+      Content copyright &copy; <%= Time.now.year %> Business Model Institute. All Rights Reserved.<br />
+      Created with <a href="http://rubyonrails.org/">Ruby on Rails</a> by <a href="http://mojomedialabs.com/">Mojo Media Labs</a>.
+    </footer>
   </div>
-  <footer id="main-footer">
-    Content copyright &copy; <%= Time.now.year %> Business Model Institute. All Rights Reserved.<br />
-    Created with <a href="http://rubyonrails.org/">Ruby on Rails</a> by <a href="http://mojomedialabs.com/">Mojo Media Labs</a>.<br />
-    <!-- Change this out so the login is near the top and is nice and big -->
-    <!-- Might want to make it so that when regular users get logged in they get redirected to the
-    assessment view and admins get redirected to the admin view. -->
-    <% unless @current_user %>
-      <%= link_to "Login", login_path %>
-    <% else %>
-      <%= link_to "Logout", logout_path %>
-      <% if @current_user.privilege_level >= User::PrivilegeLevelAdmin %>
-        | <%= link_to "Admin Panel", admin_root_path %>
-      <% end %>
-    <% end %>
-  </footer>
 </body>
 </html>

@@ -78,14 +78,7 @@ $(document).ready(function(){
     });
   }*/
 
-  function add_fields(link, association, content) {
-    var newID = new Date().getTime();
-    var regExp = new RegExp("new_" + association, "g");
-
-    $(link).parent().insertBefore(content.replace(regExp, newID));
-  }
-
-  $(".remove img").click(function() {
+  $(".remove img").live("click", function() {
     console.log($(this).parent().find(".remove-field"));
 
     $(this).parent().find(".remove-field").val("true");
@@ -121,7 +114,7 @@ $(document).ready(function(){
 
   updateDisplayOrders();
 
-  $(".display-order .increase-display-order").click(function() {
+  $(".display-order .increase-display-order").live("click", function() {
     var elementClass = $(this).parent().parent().attr("class");
 
     if ($(this).parent().parent().prev().hasClass(elementClass)) {
@@ -131,7 +124,7 @@ $(document).ready(function(){
     updateDisplayOrders();
   });
 
-  $(".display-order .decrease-display-order").click(function() {
+  $(".display-order .decrease-display-order").live("click", function() {
     var elementClass = $(this).parent().parent().attr("class");
 
     if ($(this).parent().parent().next().hasClass(elementClass)) {
@@ -141,3 +134,16 @@ $(document).ready(function(){
     updateDisplayOrders();
   });
 });
+
+function addFields(link, association, content) {
+  var newID = new Date().getTime();
+  var regExp = new RegExp("new_" + association, "g");
+
+  $(link).parent().append(content.replace(regExp, newID));
+
+  var newLink = $(link).parent().children().last();
+
+  $(link).before(newLink);
+
+  updateDisplayOrders();
+}

@@ -1,5 +1,6 @@
 class Answer < ActiveRecord::Base
   belongs_to :question
+  has_many :responses
   has_paper_trail
 
   after_initialize :initialize_defaults

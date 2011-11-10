@@ -3,6 +3,8 @@ require 'possessive'
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :get_current_user
+
   def ensure_login
     if @current_user.nil?
       flash[:type] = "attention"

@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
   def index
+    unless @current_user
+      render :login
+    end
   end
 
   def show
