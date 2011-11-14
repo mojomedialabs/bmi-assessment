@@ -61,7 +61,7 @@ en:
         created: "Blog post \"%{post_title}\" has been created! %{undo_link}."
         updated: "Blog post \"%{post_title}\" has been updated! %{undo_link}."
         destroyed: "Blog post \"%{post_title}\" has been deleted! %{undo_link}."
-    survey:
+    assessment:
       error:
         could_not_find: "Error: Unable to find the specified survey!"
         could_not_create: "Error: Unable to create the survey!"
@@ -116,6 +116,8 @@ en:
           taken: "is already in use by another page"
         post:
           user_must_exist: "must reference an existing user"
+        result:
+          top_and_bottom_order: "upper end must be greater than the lower end"
         user:
           confirmation: "does not match the confirmation"
           taken: "is already in use by another user"

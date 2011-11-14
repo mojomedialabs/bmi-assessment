@@ -1,6 +1,7 @@
 class Section < ActiveRecord::Base
   belongs_to :survey
   has_many :questions, :dependent => :destroy
+  has_many :results, :as => :resultable
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   has_paper_trail
 
@@ -8,10 +9,6 @@ class Section < ActiveRecord::Base
   before_validation :generate_slug
 
   validates :title,
-    :presence => true,
-    :uniqueness => true
-
-  validates :slug,
     :presence => true,
     :uniqueness => true
 
