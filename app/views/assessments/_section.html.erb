@@ -1,0 +1,9 @@
+<div class="section">
+  <h2><%= section.title %></h2>
+  <div class="section-description">
+    <%= section.description %>
+  </div>
+  <% section.questions.each do |question| %>
+    <%= render "question", :question => question %>
+  <% end %>
+</div>

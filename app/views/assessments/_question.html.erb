@@ -1,0 +1,10 @@
+<div class="question">
+  <p class="question-content"><%= question.content %></p>
+  <fieldset>
+    <ol style="list-style-type: upper-alpha;">
+      <% question.answers.each do |answer| %>
+        <%= render "answer", :answer => answer %>
+      <% end %>
+    </ol>
+  </fieldset>
+</div>

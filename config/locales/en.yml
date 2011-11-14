@@ -94,6 +94,7 @@ en:
         created: "User %{user_name} has been created! %{undo_link}."
         updated: "%{user_name} account has been updated! %{undo_link}."
         destroyed: "%{user_name} account has been deleted! %{undo_link}."
+        updated_self: "Your account has been updated! %{undo_link}."
     versions:
       undo: "Undo"
       redo: "Redo"

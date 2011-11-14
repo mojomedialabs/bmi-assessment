@@ -95,7 +95,7 @@ class Admin::UsersController < Admin::AdminController
         render :action => :edit and return
       end
 
-      if @user.update_attributes(params[:person])
+      if @user.update_attributes(params[:user])
         flash[:type] = "success"
 
         flash[:notice] = t "flash.user.success.updated", :user_name => @user.name.possessive, :undo_link => undo_link

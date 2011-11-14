@@ -7,7 +7,11 @@ BmiAssessment::Application.routes.draw do
 
   post 'versions/:id/revert' => 'versions#revert', :as => 'revert_version'
 
-  resources :assessments, :only => [:index, :show]
+  resources :assessments, :only => [:index, :show] do
+    member do
+      post :update_response
+    end
+  end
 
   resources :pages, :only => [:index, :show]
 
@@ -17,7 +21,7 @@ BmiAssessment::Application.routes.draw do
 
   resources :sessions, :only => [:new, :create, :destroy]
 
-  #resources :users, :except => [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :users, :only => [:edit, :update]
 
   namespace :admin do
     root :to => 'admin#index'

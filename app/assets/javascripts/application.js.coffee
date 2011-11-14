@@ -15,3 +15,6 @@ $ ->
 
       $(this).mouseout ->
         $(this).stop().animate color: original, duration
+  $(".answer input[type='radio']").click ->
+    #console.log $(this)[0].form.action
+    $.post($(this)[0].form.action, { question_id: $(this)[0].name, answer_id: $(this)[0].value }, null, "script")
