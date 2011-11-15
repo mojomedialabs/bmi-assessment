@@ -1,8 +1,9 @@
 class Section < ActiveRecord::Base
   belongs_to :survey
   has_many :questions, :dependent => :destroy
-  has_many :results, :as => :resultable
+  has_many :results, :as => :resultable, :dependent => :destroy
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :results, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   has_paper_trail
 
   after_initialize :initialize_defaults

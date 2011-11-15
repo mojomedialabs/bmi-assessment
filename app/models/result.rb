@@ -19,8 +19,8 @@ class Result < ActiveRecord::Base
     self.bottom ||= 0
   end
 
-  def top_and_bottom_must_be_in_order
-    errors.add(:parent_id, t("activerecord.errors.models.result.top_and_bottom_order")) if bottom >= top
+  def top_must_be_greater_than_bottom
+    errors.add(:parent_id, "activerecord.errors.models.result.top_and_bottom_order") if bottom >= top
   end
 
   def self.search(search)

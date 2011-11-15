@@ -1,0 +1,20 @@
+<div class="result">
+  <div class="remove">
+    <%= image_tag image_path("icons/32x32/remove.png") %>
+    <%= f.hidden_field :_destroy, :alt => "Remove Result", :class => "remove-field", :title => "Remove Result" %>
+  </div>
+  <!-- may want to change to to something other than an h4 -->
+  <h4>Result</h4>
+  <div class="result-top">
+    <%= f.label :top, "Top" %><br />
+    <%= f.text_field :top, :class => "medium" %>
+  </div>
+  <div class="result-bottom">
+    <%= f.label :bottom, "Bottom" %><br />
+    <%= f.text_field :bottom, :class => "medium" %>
+  </div>
+  <div class="result-content">
+    <%= f.label :content, "Content" %><br />
+    <%= f.text_area :content, :class => "large" %>
+  </div>
+</div>

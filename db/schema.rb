@@ -11,13 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111108164320) do
+ActiveRecord::Schema.define(:version => 20111114184036) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                  :null => false
     t.text     "content",                      :null => false
     t.integer  "weight",        :default => 1, :null => false
     t.integer  "display_order", :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assessments", :force => true do |t|
+    t.text     "title",                        :null => false
+    t.string   "slug",                         :null => false
+    t.text     "description"
+    t.integer  "display_order", :default => 0, :null => false
+    t.integer  "status",        :default => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,22 +85,21 @@ ActiveRecord::Schema.define(:version => 20111108164320) do
     t.datetime "updated_at"
   end
 
-  create_table "sections", :force => true do |t|
-    t.integer  "assessment_id",                    :null => false
-    t.text     "title",                        :null => false
-    t.string   "slug",                         :null => false
-    t.text     "description"
-    t.integer  "display_order", :default => 0, :null => false
+  create_table "results", :force => true do |t|
+    t.integer  "resultable_id",                  :null => false
+    t.string   "resultable_type",                :null => false
+    t.integer  "top",             :default => 1, :null => false
+    t.integer  "bottom",          :default => 0, :null => false
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "assessments", :force => true do |t|
+  create_table "sections", :force => true do |t|
+    t.integer  "assessment_id",                :null => false
     t.text     "title",                        :null => false
-    t.string   "slug",                         :null => false
     t.text     "description"
     t.integer  "display_order", :default => 0, :null => false
-    t.integer  "status",        :default => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

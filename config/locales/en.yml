@@ -8,6 +8,19 @@ en:
       not_authorized: "You are not authorized to view this page."
     error: "Error: "
     reboot: "Rebooting Rails. You may need to refresh this page in order to see the changes take effect."
+    assessment:
+      error:
+        could_not_find: "Error: Unable to find the specified assessment!"
+        could_not_create: "Error: Unable to create the assessment!"
+        could_not_save: "Error: Unable to save the assessment to database!"
+        could_not_update: "Error: Unable to save changes to the assessment!"
+        could_not_destroy: "Error: Unable to delete the specified assessment!"
+        could_not_find_multiple: "Error: Unable to find one or more of the specified assessments!"
+        could_not_update_multiple: "The following errors occurred when updating assessment \"%{assessment_title}\":<br />"
+      success:
+        created: "Assessment \"%{assessment_title}\" has been created! %{undo_link}."
+        updated: "Assessment \"%{assessment_title}\" has been updated! %{undo_link}."
+        destroyed: "Assessment \"%{assessment_title}\" has been deleted! %{undo_link}."
     session:
       error:
         could_not_create: "Error: Unable to create the session!"
@@ -61,19 +74,6 @@ en:
         created: "Blog post \"%{post_title}\" has been created! %{undo_link}."
         updated: "Blog post \"%{post_title}\" has been updated! %{undo_link}."
         destroyed: "Blog post \"%{post_title}\" has been deleted! %{undo_link}."
-    assessment:
-      error:
-        could_not_find: "Error: Unable to find the specified survey!"
-        could_not_create: "Error: Unable to create the survey!"
-        could_not_save: "Error: Unable to save the survey to database!"
-        could_not_update: "Error: Unable to save changes to the survey!"
-        could_not_destroy: "Error: Unable to delete the specified survey!"
-        could_not_find_multiple: "Error: Unable to find one or more of the specified surveys!"
-        could_not_update_multiple: "The following errors occurred when updating survey \"%{survey_title}\":<br />"
-      success:
-        created: "Survey \"%{survey_title}\" has been created! %{undo_link}."
-        updated: "Survey \"%{survey_title}\" has been updated! %{undo_link}."
-        destroyed: "Survey \"%{survey_title}\" has been deleted! %{undo_link}."
     user:
       error:
         could_not_find: "Error: Unable to find the specified user!"

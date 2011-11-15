@@ -86,7 +86,7 @@ class Admin::AssessmentsController < Admin::AdminController
       else
         flash[:type] = "error"
 
-        flash[:notice] = validation_errors_for(@post)
+        flash[:notice] = validation_errors_for(@assessment)
 
         render :action => :edit and return
       end

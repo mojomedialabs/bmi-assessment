@@ -133,6 +133,21 @@ $(document).ready(function(){
 
     updateDisplayOrders();
   });
+
+  $("#assessment-submit").submit(function(event) {
+    $(".result").each(function() {
+        if ($(this).find(".result-bottom input[type='text']").val() > $(this).find(".result-top input[type='text']").val()) {
+          alert("Result upper end must be above lower end.");
+
+          $("html, body").animate({ scrollTop: $(this).offset().top - 30 }, 250);
+
+          event.preventDefault();
+
+          //pretty sure we actually want to return false here
+          return false;
+        }
+    });
+  });
 });
 
 function addFields(link, association, content) {
