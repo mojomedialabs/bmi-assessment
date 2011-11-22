@@ -20,7 +20,7 @@ class Result < ActiveRecord::Base
   end
 
   def top_must_be_greater_than_bottom
-    errors.add(:parent_id, "activerecord.errors.models.result.top_and_bottom_order") if bottom >= top
+    errors.add(:parent_id, I18n.t("activerecord.errors.models.result.top_and_bottom_order")) if bottom >= top
   end
 
   def self.search(search)

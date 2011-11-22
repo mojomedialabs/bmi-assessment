@@ -65,6 +65,42 @@ a:active {
 
 /* End Flash Notification */
 
+/* Begin Forms */
+
+input {
+  &[type="file"], &[type="password"], &[type="text"] {
+    outline: none;
+    transition: box-shadow 0.30s ease-in-out, -moz-box-shadow 0.30s ease-in-out, -webkit-box-shadow 0.30s ease-in-out;
+    -moz-transition: box-shadow 0.30s ease-in-out, -moz-box-shadow 0.30s ease-in-out, -webkit-box-shadow 0.30s ease-in-out;
+    -webkit-transition: box-shadow 0.30s ease-in-out, -moz-box-shadow 0.30s ease-in-out, -webkit-box-shadow 0.30s ease-in-out;
+  }
+}
+
+select, textarea {
+  outline: none;
+  transition: box-shadow 0.30s ease-in-out, -moz-box-shadow 0.30s ease-in-out, -webkit-box-shadow 0.30s ease-in-out;
+  -moz-transition: box-shadow 0.30s ease-in-out, -moz-box-shadow 0.30s ease-in-out, -webkit-box-shadow 0.30s ease-in-out;
+  -webkit-transition: box-shadow 0.30s ease-in-out, -moz-box-shadow 0.30s ease-in-out, -webkit-box-shadow 0.30s ease-in-out;
+}
+
+input {
+  &[type="file"]:focus, &[type="password"]:focus, &[type="text"]:focus {
+    border: 1px solid #bab9b9;
+    box-shadow: 0 0 5px rgba(218, 160, 50, 1);
+    -webkit-box-shadow: 0 0 5px rgba(218, 160, 50, 1);
+    -moz-box-shadow: 0 0 5px rgba(218, 160, 50, 1);
+  }
+}
+
+select:focus, textarea:focus {
+  border: 1px solid #bab9b9;
+  box-shadow: 0 0 5px rgba(218, 160, 50, 1);
+  -webkit-box-shadow: 0 0 5px rgba(218, 160, 50, 1);
+  -moz-box-shadow: 0 0 5px rgba(218, 160, 50, 1);
+}
+
+/* End Forms */
+
 header#main-header {
   /*background-color: #ffffff;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#dedede));

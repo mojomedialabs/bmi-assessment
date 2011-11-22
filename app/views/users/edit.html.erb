@@ -39,3 +39,17 @@
     </fieldset>
   <% end %>
 </div>
+<!-- move this to main JS file -->
+<script>
+  $(function() {
+    $("#user_email_address_confirmation").val($("#user_email_address").val());
+
+    $("#user_email_address").keyup(function() {
+      $("#user_email_address_confirmation").val("");
+    });
+
+    $("#user_password").keyup(function() {
+      $("#user_password_confirmation").val("");
+    });
+  });
+</script>

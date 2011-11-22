@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require_self
 
-$(document).ready(function(){
+$(function(){
   $(".click-to-close").click(function() {
 		$(this).fadeTo(400, 0, function () {
 			$(this).slideUp(400);
@@ -115,37 +115,61 @@ $(document).ready(function(){
   updateDisplayOrders();
 
   $(".display-order .increase-display-order").live("click", function() {
-    var elementClass = $(this).parent().parent().attr("class");
+    var element = $(this).parent().parent();
 
-    if ($(this).parent().parent().prev().hasClass(elementClass)) {
-      $(this).parent().parent().insertBefore($(this).parent().parent().prev());
+    var elementClass = element.attr("class");
+
+    var elementHiddenField = element.next();
+
+    var previousElement = element.prev().prev();
+
+    if (previousElement.hasClass(elementClass)) {
+      element.insertBefore(previousElement);
+      elementHiddenField.insertAfter(element);
     }
 
     updateDisplayOrders();
   });
 
   $(".display-order .decrease-display-order").live("click", function() {
-    var elementClass = $(this).parent().parent().attr("class");
+    var element = $(this).parent().parent();
 
-    if ($(this).parent().parent().next().hasClass(elementClass)) {
-      $(this).parent().parent().insertAfter($(this).parent().parent().next());
+    var elementClass = element.attr("class");
+
+    var elementHiddenField = element.next();
+
+    var nextElement = element.next().next();
+
+    if (nextElement.hasClass(elementClass)) {
+      element.insertAfter(nextElement.next());
+      elementHiddenField.insertAfter(element);
     }
+
+    //if ($(this).parent().parent().next().next().hasClass(elementClass)) {
+      //$(this).parent().parent().insertAfter($(this).parent().parent().next());
+    //}
 
     updateDisplayOrders();
   });
 
-  $("#assessment-submit").submit(function(event) {
+  $("#assessment-form").submit(function(event) {
     $(".result").each(function() {
-        if ($(this).find(".result-bottom input[type='text']").val() > $(this).find(".result-top input[type='text']").val()) {
+        if (parseInt($(this).find(".result-bottom input[type='text']").val(), 10) > parseInt($(this).find(".result-top input[type='text']").val(), 10)) {
+          //may change this to inserting a div with the error message
           alert("Result upper end must be above lower end.");
 
           $("html, body").animate({ scrollTop: $(this).offset().top - 30 }, 250);
 
+          $(this).focus();
+
           event.preventDefault();
 
-          //pretty sure we actually want to return false here
           return false;
         }
+    });
+
+    $(".assessment > fieldset > .result").each(function() {
+
     });
   });
 });

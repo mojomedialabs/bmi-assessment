@@ -4,3 +4,6 @@
     <%= render "section", :section => section %>
   <% end %>
 <% end %>
+<%= form_tag results_assessment_path(@assessment), :method => "get" do %>
+  <%= submit_tag "Get Results" %>
+<% end %>

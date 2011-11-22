@@ -41,6 +41,34 @@ class Assessment < ActiveRecord::Base
     end
   end
 
+  def started?(user)
+    self.sections.each do |section|
+      if section.started?(user)
+        return true
+      end
+    end
+
+    return false
+  end
+
+  def complete?(user)
+    self.sections.each do |section|
+      if !section.complete?(user)
+        return false
+      end
+    end
+
+    return true
+  end
+
+  def score(user)
+    if !self.complete?(user)
+      return 0
+    end
+
+    self.sections.inject(0) { |sum, section| sum + section.score(user) }
+  end
+
   def self.search(search)
     if search
       where("title LIKE :search OR description LIKE :search", { :search => "%#{search}%" })

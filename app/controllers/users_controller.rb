@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
       flash[:notice] = t "flash.user.success.updated_self", :undo_link => undo_link
 
-      redirect_to user_url(@user) and return
+      redirect_to edit_user_url(@user) and return
     else
       flash[:type] = "error"
 
@@ -23,5 +23,9 @@ class UsersController < ApplicationController
 
       render :action => :edit and return
     end
+  end
+
+  def undo_link
+    view_context.link_to(t("flash.versions.undo"), revert_version_path(@user.versions.scoped.last), :method => :post)
   end
 end

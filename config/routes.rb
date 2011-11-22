@@ -9,6 +9,7 @@ BmiAssessment::Application.routes.draw do
 
   resources :assessments, :only => [:index, :show] do
     member do
+      get :results
       post :update_response
     end
   end

@@ -17,6 +17,7 @@ en:
         could_not_destroy: "Error: Unable to delete the specified assessment!"
         could_not_find_multiple: "Error: Unable to find one or more of the specified assessments!"
         could_not_update_multiple: "The following errors occurred when updating assessment \"%{assessment_title}\":<br />"
+        not_completed: "Error: You have not completed this assessment."
       success:
         created: "Assessment \"%{assessment_title}\" has been created! %{undo_link}."
         updated: "Assessment \"%{assessment_title}\" has been updated! %{undo_link}."

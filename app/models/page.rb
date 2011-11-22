@@ -33,7 +33,7 @@ class Page < ActiveRecord::Base
   end
 
   def parent_must_exist
-    errors.add(:parent_id, t("activerecord.errors.models.page.parent_must_exist")) if parent_id && parent.nil?
+    errors.add(:parent_id, I18n.t("activerecord.errors.models.page.parent_must_exist")) if parent_id && parent.nil?
   end
 
   def to_param

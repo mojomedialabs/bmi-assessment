@@ -1,6 +1,4 @@
 class AssessmentsController < ApplicationController
-  #layout 'assessments'
-
   before_filter :ensure_login
 
   def index
@@ -12,46 +10,37 @@ class AssessmentsController < ApplicationController
   end
 
   def update_response
-    if @current_user.responses.length > 0
-      updated = false
+    #this just assumes js request format. probably not the best idea. but this really should never be accessed any other way
+    answer = Answer.find(params[:answer_id])
 
-      @current_user.responses.each do |response|
-        if response.answer.question.id == params[:question_id]
-          if response.answer.id != params[:answer_id]
-            Response.destroy(response)
-
-            updated_response = Response.new
-
-            updated_response.user_id = @current_user.id
-
-            updated_response.answer_id = params[:answer_id]
-
-            updated_response.save
-
-            updated = true
-
-            break
-          end
-        end
-      end
-
-      if !updated
-        updated_response = Response.new
-
-        updated_response.user_id = @current_user.id
-
-        updated_response.answer_id = params[:answer_id]
-
-        updated_response.save
+    if !answer.nil?
+      if @current_user.update_response(answer)
+        render :text => "You successfully answered the question!", :status => 200
+      else
+        render :text => "Error answering the question. Something awful went wrong! (\uFF61\u25D5\u203F\u203F\u25D5\uFF61)", :status => 500
       end
     else
-      updated_response = Response.new
+      render :text => "Error answering the question. The requested answer option not found.", :status => 404
+    end
+  end
 
-      updated_response.user_id = @current_user.id
+  def results
+    @assessment = Assessment.find_by_slug(params[:id])
 
-      updated_response.answer_id = params[:answer_id]
+    if @assessment.nil?
+      flash[:type] = "error"
 
-      updated_response.save
+      flash[:notice] = t "flash.assessment.error.could_not_find"
+
+      redirect_to assessments_url and return
+    end
+
+    if !@assessment.complete?(@current_user)
+      flash[:type] = "error"
+
+      flash[:notice] = t "flash.assessment.error.not_completed"
+
+      redirect_to @assessment
     end
   end
 end

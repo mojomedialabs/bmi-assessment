@@ -28,6 +28,7 @@
             <% if @current_user.privilege_level >= User::PrivilegeLevelAdmin %>
               <li><%= link_to "Admin Panel", admin_root_path %></li>
             <% end %>
+            <li><%= link_to "Edit Profile", edit_user_path(@current_user) %></li>
           <% end %>
           <% Page.top_level.order("display_order").each do |page| %>
             <li><%= link_to page.title, page %></li>

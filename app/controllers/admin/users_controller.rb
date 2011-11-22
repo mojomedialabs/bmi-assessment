@@ -98,7 +98,7 @@ class Admin::UsersController < Admin::AdminController
       if @user.update_attributes(params[:user])
         flash[:type] = "success"
 
-        flash[:notice] = t "flash.user.success.updated", :user_name => @user.name.possessive, :undo_link => undo_link
+        flash[:notice] = t "flash.user.success.updated", :user_name => @user.first_name.possessive, :undo_link => undo_link
 
         redirect_to admin_user_url(@user) and return
       else

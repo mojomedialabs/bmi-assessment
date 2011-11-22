@@ -87,6 +87,28 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver
   end
 
+  def update_response(answer)
+      previous_responses = Response.find_all_by_user_id(self.id).select do |response|
+        response.answer.question == answer.question
+      end
+
+      if previous_responses.length > 0
+        previous_responses.each do |response|
+          Response.destroy(response)
+        end
+      end
+
+      response = Response.new
+
+      response.user = self
+
+      response.answer = answer
+
+      response.save
+
+      return true
+  end
+
   def self.authenticate(email_address, password, limit_session = false)
     user = find_by_email_address(email_address)
 

@@ -7,7 +7,6 @@ class Section < ActiveRecord::Base
   has_paper_trail
 
   after_initialize :initialize_defaults
-  before_validation :generate_slug
 
   validates :title,
     :presence => true,
@@ -21,16 +20,32 @@ class Section < ActiveRecord::Base
     self.display_order ||= 0
   end
 
-  def to_param
-    self.slug
+  def started?(user)
+    self.questions.each do |question|
+      if question.answered?(user)
+        return true
+      end
+    end
+
+    return true
   end
 
-  def generate_slug
-    if self.title.blank?
-      self.slug = self.id
-    else
-      self.slug = self.title.parameterize
+  def complete?(user)
+    self.questions.each do |question|
+      if !question.answered?(user)
+        return false
+      end
     end
+
+    return true
+  end
+
+  def score(user)
+    if !self.complete?(user)
+      return 0
+    end
+
+    self.questions.inject(0) { |sum, question| sum + question.response_weight(user) }
   end
 
   def self.search(search)

@@ -14,6 +14,30 @@ class Question < ActiveRecord::Base
     self.display_order ||= 0
   end
 
+  def answered?(user)
+    self.answers.each do |answer|
+      response = Response.find_by_user_id_and_answer_id(user.id, answer.id)
+
+      if !response.nil?
+        return true
+      end
+    end
+
+    return false
+  end
+
+  def response_weight(user)
+    self.answers.each do |answer|
+      response = Response.find_by_user_id_and_answer_id(user.id, answer.id)
+
+      if !response.nil?
+        return answer.weight
+      end
+    end
+
+    return nil
+  end
+
   def self.search(search)
     if search
       where("content LIKE :search", { :search => "%#{search}%" })
