@@ -11,3 +11,4 @@ public/images/notifications/
 app/assets/images/icons/
 app/assets/images/notifications/
 *.backup
+setup_mail.rb

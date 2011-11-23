@@ -47,6 +47,9 @@ class User < ActiveRecord::Base
     :presence => true,
     :numericality => true
 
+  scope :admins, lambda { where("users.privilege_level >= ?", 3) }
+  scope :regular_users, lambda { where("users.privilege_level <= ?", 1) }
+
   PrivilegeLevelGuest     = 0
   PrivilegeLevelUser      = 1
   PrivilegeLevelModerator = 2
@@ -77,6 +80,10 @@ class User < ActiveRecord::Base
     self.email_address.downcase!
   end
 
+  def send_welcome
+    UserMailer.welcome(self).deliver
+  end
+
   def send_password_reset
     generate_token(:password_reset_token)
 
@@ -87,10 +94,20 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver
   end
 
+  def send_assessment_results(assessment)
+    UserMailer.assessment_results(assessment, self).deliver
+  end
+
+  def self.send_admin_assessment_results(assessment, user)
+    UserMailer.admin_assessment_results(assessnebt, user).deliver
+  end
+
   def update_response(answer)
       previous_responses = Response.find_all_by_user_id(self.id).select do |response|
         response.answer.question == answer.question
       end
+
+      complete_before = answer.question.section.assessment.complete?(self)
 
       if previous_responses.length > 0
         previous_responses.each do |response|
@@ -105,6 +122,12 @@ class User < ActiveRecord::Base
       response.answer = answer
 
       response.save
+
+      complete_after = answer.question.section.assessment.complete?(self)
+
+      if !complete_before and complete_after
+        self.send_assessment_results(answer.question.section.assessment)
+      end
 
       return true
   end
