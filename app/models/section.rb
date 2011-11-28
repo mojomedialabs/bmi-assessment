@@ -21,6 +21,10 @@ class Section < ActiveRecord::Base
   end
 
   def started?(user)
+    if self.questions.length == 0
+      return false
+    end
+
     self.questions.each do |question|
       if question.answered?(user)
         return true
@@ -31,6 +35,10 @@ class Section < ActiveRecord::Base
   end
 
   def complete?(user)
+    if self.questions.length == 0
+      return false
+    end
+
     self.questions.each do |question|
       if !question.answered?(user)
         return false

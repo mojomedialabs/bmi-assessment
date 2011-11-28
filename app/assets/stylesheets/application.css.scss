@@ -24,6 +24,10 @@ a:active {
   width: 900px;
 }
 
+h2 {
+  font-size: 23px;
+}
+
 /* End General Link Styles */
 
 /* Begin Flash Notification */
@@ -101,6 +105,8 @@ select:focus, textarea:focus {
 
 /* End Forms */
 
+/* Begin Main Header */
+
 header#main-header {
   /*background-color: #ffffff;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#dedede));
@@ -142,6 +148,10 @@ header#main-header {
   }
 }
 
+/* End Main Header */
+
+/* Begin Login Page */
+
 #login {
   overflow: hidden;
   #login-form {
@@ -177,3 +187,22 @@ p#login-intro {
   font-size: 30px;
   text-align: justify;
 }
+
+/* End Login Page */
+
+.assessment-list {
+  font-size: 20px;
+  list-style: none;
+}
+
+/* Begin Main Footer */
+
+#main-footer {
+  margin-top: 65px;
+  #mojo {
+    color: #aaaaaa;
+    font-size: 8px;
+  }
+}
+
+/* End Main Footer */

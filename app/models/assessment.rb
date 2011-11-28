@@ -42,6 +42,10 @@ class Assessment < ActiveRecord::Base
   end
 
   def started?(user)
+    if self.sections.length == 0
+      return false
+    end
+
     self.sections.each do |section|
       if section.started?(user)
         return true
@@ -52,6 +56,10 @@ class Assessment < ActiveRecord::Base
   end
 
   def complete?(user)
+    if self.sections.length == 0
+      return false
+    end
+
     self.sections.each do |section|
       if !section.complete?(user)
         return false

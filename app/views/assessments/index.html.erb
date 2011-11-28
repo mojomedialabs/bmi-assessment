@@ -1,7 +1,9 @@
 <h1>Assessments</h1>
+<p>Here is a complete list of all assessments available to you including ones you have started and completed. Assessments marked as complete may be revisited and their answers revised.</p>
 <% Assessment.all.each do |assessment| %>
   <div class="assessment">
-    <%= link_to assessment.title, assessment %><br />
-    <%= assessment.description %>
+    <h2><%= link_to assessment.title, assessment %></h2>
+    <div class="assessment-status"><strong>Status:</strong> <%= get_status(assessment) %></div>
+    <div class="assessment-description"><%= raw assessment.description %></div>
   </div>
 <% end %>

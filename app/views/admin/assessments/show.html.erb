@@ -42,6 +42,18 @@
         </li>
       <% end %>
     </ol>
+    <h4>Section Results</h4>
+    <% section.results.each do |result| %>
+      <p><strong>Top:</strong> <%= result.top %></p>
+      <p><strong>Bottom:</strong> <%= result.bottom %></p>
+      <pre><%= result.content %></pre>
+    <% end %>
+  <% end %>
+  <h3>Assessment Results</h3>
+  <% @assessment.results.each do |result| %>
+    <p><strong>Top:</strong> <%= result.top %></p>
+    <p><strong>Bottom:</strong> <%= result.bottom %></p>
+    <pre><%= result.content %></pre>
   <% end %>
 </div>
 <div id="toggle-debug" class="in">

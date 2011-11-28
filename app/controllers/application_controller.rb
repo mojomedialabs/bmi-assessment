@@ -3,6 +3,8 @@ require 'possessive'
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  layout :get_layout
+
   before_filter :get_current_user
 
   def ensure_login
@@ -84,6 +86,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def get_layout
+    #If we go the two domain route this is where we will check the request's domain and then switch based on that
+    return "application"
+  end
 
   def get_current_user
     @current_user ||= User.find_by_remember_me_token(cookies[:remember_me_token]) if cookies[:remember_me_token]

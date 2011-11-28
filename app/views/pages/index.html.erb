@@ -1,7 +1,6 @@
 <h1>Welcome Back <%= @current_user.first_name %>!</h1>
-<%= link_to "View All Assessments", assessments_path %>
 <h2>Assessments You've Started</h2>
-<ul>
+<ul class="assessment-list">
   <% Assessment.all.each do |assessment| %>
     <% if assessment.started?(@current_user) and !assessment.complete?(@current_user) %>
       <li><%= link_to assessment.title, assessment %></li>
@@ -9,7 +8,7 @@
   <% end %>
 </ul>
 <h2>Assessments You've Completed</h2>
-<ul>
+<ul class="assessment-list">
   <% Assessment.all.each do |assessment| %>
     <% if assessment.complete?(@current_user) %>
       <li><%= link_to assessment.title, results_assessment_path(assessment) %></li>

@@ -1,4 +1,14 @@
 module AssessmentsHelper
+  def get_status(assessment)
+    if assessment.complete?(@current_user)
+      return ("Completed! " + link_to("View Results", results_assessment_path(assessment))).html_safe
+    elsif assessment.started?(@current_user)
+      return "Started".html_safe
+    else
+      return "Not Started".html_safe
+    end
+  end
+
   def check_answer(answer_id)
     response = @current_user.responses.detect { |response| response.answer_id == answer_id }
 

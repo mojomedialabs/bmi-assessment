@@ -19,20 +19,6 @@ class Admin::AssessmentsController < Admin::AdminController
 
   def new
     @assessment = Assessment.new
-
-=begin
-    0.times do
-      section = @assessment.sections.build
-
-      3.times do
-        question = section.questions.build
-
-        4.times do
-          question.answers.build
-        end
-      end
-    end
-=end
   end
 
   def create
