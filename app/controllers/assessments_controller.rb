@@ -43,4 +43,16 @@ class AssessmentsController < ApplicationController
       redirect_to @assessment
     end
   end
+
+  def summary
+    @assessments = Assessment.order("display_order asc").delete_if { |assessment| !assessment.complete?(@current_user) }
+
+    if @assessments.length == 0
+      flash[:type] = "error"
+
+      flash[:notice] = t "i18n THIS! Error: You have not completed any assessments."
+
+      redirect_to assessments_url and return
+    end
+  end
 end

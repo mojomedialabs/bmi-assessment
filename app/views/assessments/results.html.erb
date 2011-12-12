@@ -1,2 +1,1 @@
-<a href="#top"></a>
-<%= get_results(@assessment).html_safe %>
+<%= render "results", :assessment => @assessment, :user => @current_user %>

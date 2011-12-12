@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>Business Model Institute Assessment Admin Panel</title>
   <meta name="description" content="" />
   <meta name="author" content="Mojo Media Labs" />
@@ -27,7 +26,7 @@
           <li><%= link_to "Admin Home", admin_root_path, :class => is_current_controller?("admin/admin") %></li>
           <li><%= link_to User.model_name.human.pluralize, admin_users_path, :class => is_current_controller?("admin/users") %></li>
           <li><%= link_to Page.model_name.human.pluralize, admin_pages_path, :class => is_current_controller?("admin/pages") %></li>
-          <li><%= link_to Post.model_name.human.pluralize, admin_posts_path, :class => is_current_controller?("admin/posts") %></li>
+          <li style="display: none;"><%= link_to Post.model_name.human.pluralize, admin_posts_path, :class => is_current_controller?("admin/posts") %></li>
           <li><%= link_to Picture.model_name.human.pluralize, admin_pictures_path, :class => is_current_controller?("admin/pictures") %></li>
           <li><%= link_to Assessment.model_name.human.pluralize, admin_assessments_path, :class => is_current_controller?("admin/assessments") %></li>
           <li><%= link_to "Site Home", root_path %></li>

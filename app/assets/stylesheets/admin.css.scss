@@ -219,6 +219,10 @@ th, td {
 
 /* Begin Forms */
 
+form div {
+  margin-bottom: 15px;
+}
+
 input {
   &[type="file"], &[type="password"], &[type="text"] {
     border: 1px solid #bab9b9;
@@ -385,14 +389,6 @@ footer {
 
 .section {
   border-top: 1px solid #bab9b9;
-  .display-order {
-    cursor: pointer;
-    float: right;
-  }
-  .remove {
-    cursor: pointer;
-    float: right;
-  }
   h3 {
     font-size: 22px;
   }
@@ -401,26 +397,20 @@ footer {
   }
   .question {
     margin-left: 10px;
-    .display-order {
-      cursor: pointer;
-      float: right;
-    }
-    .remove {
-      cursor: pointer;
-      float: right;
-    }
     .answer {
       margin-left: 10px;
-      .display-order {
-        cursor: pointer;
-        float: right;
-      }
-      .remove {
-        cursor: pointer;
-        float: right;
-      }
     }
   }
+}
+
+.display-order {
+  cursor: pointer;
+  float: right;
+}
+
+.remove {
+  cursor: pointer;
+  float: right;
 }
 
 /* End New Survey */

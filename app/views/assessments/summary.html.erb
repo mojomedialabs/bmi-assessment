@@ -1,0 +1,3 @@
+<% @assessments.each do |assessment| %>
+  <%= render "results", :assessment => assessment, :user => @current_user %>
+<% end %>

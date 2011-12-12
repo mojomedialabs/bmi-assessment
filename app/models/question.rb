@@ -38,6 +38,20 @@ class Question < ActiveRecord::Base
     return nil
   end
 
+  def max_score
+    max = nil
+
+    self.answers.each do |answer|
+      if !max.nil? and answer.weight > max
+        max = answer.weight
+      elsif max.nil?
+        max = answer.weight
+      end
+    end
+
+    return max
+  end
+
   def self.search(search)
     if search
       where("content LIKE :search", { :search => "%#{search}%" })

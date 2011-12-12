@@ -77,6 +77,24 @@ class Assessment < ActiveRecord::Base
     self.sections.inject(0) { |sum, section| sum + section.score(user) }
   end
 
+  def max_score
+    max = 0
+
+    self.sections.each do |section|
+      max += section.max_score
+    end
+
+    return max
+  end
+
+  def time_started
+    return Time.now
+  end
+
+  def time_finished
+    return Time.now
+  end
+
   def self.search(search)
     if search
       where("title LIKE :search OR description LIKE :search", { :search => "%#{search}%" })

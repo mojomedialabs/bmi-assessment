@@ -15,6 +15,22 @@ module AssessmentsHelper
     return !response.nil?
   end
 
+  def get_result(assessment)
+    assessment_result = ""
+
+    assessment_score = assessment.score(@current_user)
+
+    assessment.results.each do |result|
+      if assessment_score >= result.bottom and assessment_score <= result.top
+        assessment_result += result.content.gsub(/\[Company Name\]/, @current_user.company_name)
+
+        break
+      end
+    end
+
+    return assessment_result.html_safe
+  end
+
   def get_results(assessment)
     assessment_results = "<div class=\"assessment-result\">"
 
@@ -24,7 +40,7 @@ module AssessmentsHelper
 
     assessment.results.each do |result|
       if assessment_score >= result.bottom and assessment_score <= result.top
-        assessment_results += result.content
+        assessment_results += result.content.gsub(/\[Company Name\]/, @current_user.company_name)
 
         break
       end
@@ -35,13 +51,13 @@ module AssessmentsHelper
     assessment_results += "<div class=\"section-results-list\"><ul>"
 
     assessment.sections.each do |section|
-      assessment_results += "<li><a href=\"#section#{section.id}\">#{section.title}</a></li>"
+      assessment_results += "<li>#{section.title}</li>"
     end
 
     assessment_results += "</ul></div>"
 
     assessment.sections.each do |section|
-      section_results = "<div class=\"section-result\"><a name=\"section#{section.id}\"></a>"
+      section_results = "<div class=\"section-result\">"
 
       section_score = section.score(@current_user)
 
@@ -50,7 +66,7 @@ module AssessmentsHelper
 
       section.results.each do |result|
         if section_score >= result.bottom and section_score <= result.top
-          section_results += result.content
+          section_results += result.content.gsub(/\[Company Name\]/, @current_user.company_name)
 
           break
         end
@@ -61,6 +77,6 @@ module AssessmentsHelper
       assessment_results += section_results
     end
 
-    assessment_results
+    assessment_results.html_safe
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114184036) do
+ActiveRecord::Schema.define(:version => 20111206234149) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                  :null => false
@@ -23,13 +23,14 @@ ActiveRecord::Schema.define(:version => 20111114184036) do
   end
 
   create_table "assessments", :force => true do |t|
-    t.text     "title",                        :null => false
-    t.string   "slug",                         :null => false
+    t.text     "title",                            :null => false
+    t.string   "slug",                             :null => false
     t.text     "description"
-    t.integer  "display_order", :default => 0, :null => false
-    t.integer  "status",        :default => 1, :null => false
+    t.integer  "display_order",     :default => 0, :null => false
+    t.integer  "status",            :default => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "executive_summary"
   end
 
   create_table "pages", :force => true do |t|
@@ -121,6 +122,12 @@ ActiveRecord::Schema.define(:version => 20111114184036) do
     t.datetime "last_login"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "company_name"
+    t.string   "job_title"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "zipcode"
+    t.string   "state"
   end
 
   create_table "versions", :force => true do |t|

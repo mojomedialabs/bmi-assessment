@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
 
   validates :password,
     :presence => true,
-    :length => { :minimum => 6, :maximum => 32 },
-    :format => { :with => /^([\x20-\x7E]){6,32}$/ },
+    :length => { :minimum => 6, :maximum => 255 },
+    :format => { :with => /^([\x20-\x7E]){6,255}$/ },
     :confirmation => true,
     :on => :create
 
@@ -30,6 +30,21 @@ class User < ActiveRecord::Base
     :presence => true
 
   validates :last_name,
+    :presence => true
+
+  validates :company_name,
+    :presence => true
+
+  validates :street_address,
+    :presence => true
+
+  validates :city,
+    :presence => true
+
+  validates :zipcode,
+    :presence => true
+
+  validates :state,
     :presence => true
 
   validates :phone_number,

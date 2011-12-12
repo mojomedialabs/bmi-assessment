@@ -56,6 +56,16 @@ class Section < ActiveRecord::Base
     self.questions.inject(0) { |sum, question| sum + question.response_weight(user) }
   end
 
+  def max_score
+    max = 0
+
+    self.questions.each do |question|
+      max += question.max_score
+    end
+
+    return max
+  end
+
   def self.search(search)
     if search
       where("title LIKE :search OR description LIKE :search", { :search => "%#{search}%" })

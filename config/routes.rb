@@ -8,6 +8,9 @@ BmiAssessment::Application.routes.draw do
   post 'versions/:id/revert' => 'versions#revert', :as => 'revert_version'
 
   resources :assessments, :only => [:index, :show] do
+    collection do
+      get :summary
+    end
     member do
       get :results
       post :update_response
@@ -45,7 +48,11 @@ BmiAssessment::Application.routes.draw do
       end
     end
 
-    resources :pictures
+    resources :pictures do
+      collection do
+        get :selector
+      end
+    end
 
     resources :posts do
       collection do

@@ -1,0 +1,46 @@
+/*
+*= require reset
+*= require_self
+*/
+
+@charset "utf-8";
+
+.do-not-print {
+  display: none;
+}
+
+.print-page {
+  page-break-after: always;
+}
+
+header#main-header {
+  display: none;
+}
+
+/* Begin Assessment Results */
+
+.assessment-score {
+  display: none;
+}
+
+.assessment-max-score {
+  display: none;
+}
+
+.assessment-graph {
+  text-align: center;
+}
+
+.section-score {
+  display: none;
+}
+
+.section-max-score {
+  display: none;
+}
+
+.section-graph {
+  text-align: center;
+}
+
+/* End Assessment Results */

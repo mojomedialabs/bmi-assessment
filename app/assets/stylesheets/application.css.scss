@@ -71,6 +71,82 @@ h2 {
 
 /* Begin Forms */
 
+form div {
+  margin-bottom: 15px;
+}
+
+input {
+  &[type="file"], &[type="password"], &[type="text"] {
+    border: 1px solid #bab9b9;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    color: #707070;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 10px;
+  }
+}
+
+select {
+  border: 1px solid #bab9b9;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  color: #707070;
+  font-size: 14px;
+  margin-top: 5px;
+  padding: 10px;
+}
+
+input {
+  &[type="button"], &[type="reset"], &[type="submit"] {
+    border: 0;
+    background: #f7941d;
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0;
+    padding: 10px 20px;
+  }
+}
+
+textarea {
+  border: 1px solid #bab9b9;
+  color: #707070;
+  font-size: 14px;
+  height: 140px;
+  margin-top: 5px;
+  padding: 10px;
+  width: 830px;
+}
+
+input.small, select.small {
+  width: 300px;
+}
+
+input.medium, select.medium {
+  width: 600px;
+}
+
+input.large, select.large {
+  width: 830px;
+}
+
+form p {
+  margin-bottom: 15px;
+}
+
+.field_with_errors {
+  input, select, textarea {
+    border: #ff3443 1px solid;
+    box-shadow: 0 0 5px rgba(255, 52, 67, 1);
+    -moz-box-shadow: 0 0 5px rgba(255, 52, 67, 1);
+    -webkit-box-shadow: 0 0 5px rgba(255, 52, 67, 1);
+  }
+}
+
 input {
   &[type="file"], &[type="password"], &[type="text"] {
     outline: none;
@@ -194,6 +270,34 @@ p#login-intro {
   font-size: 20px;
   list-style: none;
 }
+
+/* Begin Assessment Results */
+
+.assessment-score {
+  display: none;
+}
+
+.assessment-max-score {
+  display: none;
+}
+
+.assessment-graph {
+  text-align: center;
+}
+
+.section-score {
+  display: none;
+}
+
+.section-max-score {
+  display: none;
+}
+
+.section-graph {
+  text-align: center;
+}
+
+/* End Assessment Results */
 
 /* Begin Main Footer */
 

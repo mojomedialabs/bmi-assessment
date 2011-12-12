@@ -1,7 +1,7 @@
 <div class="section">
   <h2><%= section.title %></h2>
   <div class="section-description">
-    <%= section.description %>
+    <%= section.description.html_safe %>
   </div>
   <% section.questions.each do |question| %>
     <%= render "question", :question => question %>

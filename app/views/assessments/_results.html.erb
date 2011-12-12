@@ -1,0 +1,43 @@
+<div id="assessment-<%= assessment.id %>-result" class="assessment-result print-page">
+  <div class="assessment-score"><%= assessment.score(user) %></div>
+  <div class="assessment-max-score"><%= assessment.max_score %></div>
+  <div class="assessment-cover-page print-page">
+    <h1 style="text-align: center;"><%= assessment.title %> Results</h1>
+    <h2>Overall</h2>
+    <div class="cover-page-assessment-graph">
+      <canvas class="assessment-cover-page-overall-graph-canvas" height="100px" width="600px"></canvas>
+    </div>
+    <% assessment.sections.each do |section| %>
+      <h2><%= section.title %>
+      <div class="cover-page-section-graph">
+        <div class="section-score"><%= section.score(user) %></div>
+        <div class="section-max-score"><%= section.max_score %></div>
+        <canvas class="assessment-cover-page-section-graph-canvas" height="50px" width="300px"></canvas>
+      </div>
+    <% end %>
+  </div>
+  <div class="assessment-executive-summary">
+    <h2>Executive Summary</h2>
+      <% unless assessment.executive_summary.blank? %>
+        <%= assessment.executive_summary.gsub(/\[Company Name\]/, user.company_name).html_safe %>
+      <% end %>
+  </div>
+  <div class="assessment-overall-result">
+    <h2>Overall Results</h2>
+    <div class="assessment-graph">
+      <canvas class="assessment-graph-canvas" height="100px" width="600px"></canvas>
+    </div>
+    <%= get_result(assessment) %>
+  </div>
+  <% assessment.sections.each do |section| %>
+    <div class="section-result">
+      <div class="section-score"><%= section.score(user) %></div>
+      <div class="section-max-score"><%= section.max_score %></div>
+      <h2><%= section.title %></h2>
+      <div class="section-graph">
+        <canvas class="section-graph-canvas" height="100px" width="600px"></canvas>
+      </div>
+      <%= get_result(section) %>
+    </div>
+  <% end %>
+</div>

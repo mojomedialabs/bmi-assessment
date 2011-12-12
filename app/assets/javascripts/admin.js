@@ -2,7 +2,10 @@
 //= require jquery_ujs
 //= require_self
 
+var lastTextArea;
+
 $(function(){
+  // Close flash[:alert] messages when clicked
   $(".click-to-close").click(function() {
 		$(this).fadeTo(400, 0, function () {
 			$(this).slideUp(400);
@@ -10,12 +13,14 @@ $(function(){
 		return false;
 	});
 
+  // Reset focus to search forms if they have stuff in them
 	if ($("#search").length) {
 		if ($("#search").val().length > 0) {
 			$("#search").focus();
 		}
 	}
 
+  // AJAX history
 	if (history && history.pushState) {
 		$("#index-search").submit(function() {
 			$.get(this.action, $(this).serialize(), null, "script");
@@ -38,10 +43,12 @@ $(function(){
 		});
 	}
 
+  // Check all checkbox for index pages
 	$(".check-all").click(function() {
 		$(this).parent().parent().parent().parent().find("input[type='checkbox']").attr("checked", $(this).is(":checked"));
 	});
 
+  // Only allow multiple items to be edited/removed if at least one is selected
 	$("input:checkbox").click(function() {
 		var buttonsChecked = $("input:checkbox:checked");
 
@@ -54,11 +61,43 @@ $(function(){
 		}
 	});
 
+  // Toggle debug view when showing items
 	$("#toggle-debug").click(function() {
 		$("#debug-info").slideToggle();
 
 		$(".toggle-debug-text").toggle();
 	});
+
+  // Fill out user email confirmation so it doesn't have to be done manually every time
+  $("#user_email_address_confirmation").val($("#user_email_address").val());
+
+  // Empty user email confirmation if email changes
+  $("#user_email_address").keyup(function() {
+    $("#user_email_address_confirmation").val("");
+    $("#user_email_address_confrimation").attr("placeholder", $("#user_email_address").val());
+  });
+
+  // Empty user password confirmation if password changess
+  $("#user_password").keyup(function() {
+    $("#user_password_confirmation").val("");
+  });
+
+  // Get picture selector
+  $("#picture-selector-button").click(function(event) {
+    event.preventDefault();
+
+    if ($("#picture-selector-container").length === 0) {
+      var jqxhr = $.get("/admin/pictures/selector", null, function(data, textStatus, jqXHR) {
+        $(".content").append(data);
+    	}, "html");
+    }
+  });
+
+  lastTextArea = $("textarea").first();
+
+  $("textarea").focus(function() {
+    lastTextArea = this;
+  });
 
   /*function setChildrenDisplayOrder(selector) {
     console.log(selector);
@@ -78,6 +117,7 @@ $(function(){
     });
   }*/
 
+  // Remove assessment, section, question, or answer
   $(".remove img").live("click", function() {
     console.log($(this).parent().find(".remove-field"));
 
@@ -90,6 +130,7 @@ $(function(){
     updateDisplayOrders();
   });
 
+  // Go through all sections, questions, and answers and update their display order
   function updateDisplayOrders() {
     $(".section").not(".deleted-field").find("> .display-order > .display-order-field").not(".deleted-field").each(function(index, value) {
       $(this).val(index);
@@ -112,8 +153,10 @@ $(function(){
     });
   }
 
+  // Do this every time to start off with for good measure
   updateDisplayOrders();
 
+  // Move section, question, or answer up, then update all display orders
   $(".display-order .increase-display-order").live("click", function() {
     var element = $(this).parent().parent();
 
@@ -131,6 +174,7 @@ $(function(){
     updateDisplayOrders();
   });
 
+  // Move section, question, or answer down, then update all display orders
   $(".display-order .decrease-display-order").live("click", function() {
     var element = $(this).parent().parent();
 
@@ -145,13 +189,10 @@ $(function(){
       elementHiddenField.insertAfter(element);
     }
 
-    //if ($(this).parent().parent().next().next().hasClass(elementClass)) {
-      //$(this).parent().parent().insertAfter($(this).parent().parent().next());
-    //}
-
     updateDisplayOrders();
   });
 
+  // When submitting assessment, double check all the result upper and lower ends
   $("#assessment-form").submit(function(event) {
     $(".result").each(function() {
         if (parseInt($(this).find(".result-bottom input[type='text']").val(), 10) > parseInt($(this).find(".result-top input[type='text']").val(), 10)) {
@@ -174,6 +215,7 @@ $(function(){
   });
 });
 
+// Add section, question, or answer, then update all display orders
 function addFields(link, association, content) {
   var newID = new Date().getTime();
   var regExp = new RegExp("new_" + association, "g");
