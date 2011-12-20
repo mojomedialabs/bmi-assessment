@@ -22,7 +22,7 @@ module AssessmentsHelper
 
     assessment.results.each do |result|
       if assessment_score >= result.bottom and assessment_score <= result.top
-        assessment_result += result.content.gsub(/\[Company Name\]/, @current_user.company_name)
+        assessment_result += result.content.gsub(/\[Company Name\]/, @current_user.company_name).gsub(/\[Company Nickname\]/, @current_user.company_name)
 
         break
       end
@@ -40,7 +40,7 @@ module AssessmentsHelper
 
     assessment.results.each do |result|
       if assessment_score >= result.bottom and assessment_score <= result.top
-        assessment_results += result.content.gsub(/\[Company Name\]/, @current_user.company_name)
+        assessment_results += result.content.gsub(/\[Company Name\]/, @current_user.company_name).gsub(/\[Company Nickname\]/, @current_user.company_name)
 
         break
       end
@@ -66,7 +66,7 @@ module AssessmentsHelper
 
       section.results.each do |result|
         if section_score >= result.bottom and section_score <= result.top
-          section_results += result.content.gsub(/\[Company Name\]/, @current_user.company_name)
+          section_results += result.content.gsub(/\[Company Name\]/, @current_user.company_name).gsub(/\[Company Nickname\]/, @current_user.company_name)
 
           break
         end

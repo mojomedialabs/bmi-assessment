@@ -19,7 +19,7 @@
   <div class="assessment-executive-summary">
     <h2>Executive Summary</h2>
       <% unless assessment.executive_summary.blank? %>
-        <%= assessment.executive_summary.gsub(/\[Company Name\]/, user.company_name).html_safe %>
+        <%= assessment.executive_summary.gsub(/\[Company Name\]/, user.company_name).gsub(/\[Company Nickname\]/, user.company_name).html_safe %>
       <% end %>
   </div>
   <div class="assessment-overall-result">
