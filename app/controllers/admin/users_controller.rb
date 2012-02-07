@@ -1,8 +1,16 @@
+require 'action_view'
+
 class Admin::UsersController < Admin::AdminController
   helper_method :sort_column, :sort_order
 
   def index
-    @users = User.search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
+    if @current_user.is_facilitator?
+      @users = User.where("facilitator_id == ?", @current_user.id).search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
+
+      @users << @current_user
+    else
+      @users = User.search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
+    end
   end
 
   def show
@@ -36,7 +44,7 @@ class Admin::UsersController < Admin::AdminController
       if @user.save
         flash[:type] = "success"
 
-        flash[:notice] = t "flash.user.success.created", :user_name => "#{@user.first_name} #{@user.last_name}", :undo_link => undo_link
+        flash[:notice] = t "flash.user.success.created", :user_name => @user.full_name, :undo_link => undo_link
 
         redirect_to admin_users_url and return
       else

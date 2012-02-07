@@ -38,6 +38,24 @@ class Question < ActiveRecord::Base
     return nil
   end
 
+  def min_score
+    min = nil
+
+    self.answers.each do |answer|
+      if !min.nil? and answer.weight < min
+        min = answer.weight
+      elsif min.nil?
+        min = answer.weight
+      end
+    end
+
+    unless min.nil?
+      return min
+    else
+      return 0
+    end
+  end
+
   def max_score
     max = nil
 
@@ -49,7 +67,11 @@ class Question < ActiveRecord::Base
       end
     end
 
-    return max
+    unless max.nil?
+      return max
+    else
+      return 0
+    end
   end
 
   def self.search(search)

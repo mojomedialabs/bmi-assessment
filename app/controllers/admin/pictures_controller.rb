@@ -1,6 +1,8 @@
 class Admin::PicturesController < Admin::AdminController
   helper_method :sort_column, :sort_order
 
+  before_filter :is_admin?
+
   def index
     @pictures = Picture.search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
   end

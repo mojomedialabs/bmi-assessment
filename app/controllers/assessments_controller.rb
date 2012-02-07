@@ -3,10 +3,30 @@ class AssessmentsController < ApplicationController
 
   def index
     @assessments = Assessment.all
+
+    @clients = @current_user.clients.order("company_name asc")
   end
 
   def show
     @assessment = Assessment.find_by_slug(params[:id])
+
+    if @assessment.nil?
+      flash[:type] = "error"
+
+      flash[:notice] = t "flash.assessment.error.could_not_find"
+
+      redirect_to assessments_url and return
+    end
+
+    @client = User.find_by_id(params[:client_id])
+
+    if @client.nil? or @current_user.clients.index(@client).nil?
+      flash[:type] = "error"
+
+      flash[:notice] = "Error: The specified client does not exist."
+
+      redirect_to assessments_url and return
+    end
   end
 
   def update_response
@@ -14,10 +34,16 @@ class AssessmentsController < ApplicationController
     answer = Answer.find(params[:answer_id])
 
     if !answer.nil?
-      if @current_user.update_response(answer)
-        render :text => "You successfully answered the question!", :status => 200
+      client = User.find(params[:client_id])
+
+      if !client.nil? and !@current_user.clients.index(client).nil?
+        if client.update_response(answer)
+          render :text => "You successfully answered the question!", :status => 200
+        else
+          render :text => "Error answering the question. Something awful went wrong! (\uFF61\u25D5\u203F\u203F\u25D5\uFF61)", :status => 500
+        end
       else
-        render :text => "Error answering the question. Something awful went wrong! (\uFF61\u25D5\u203F\u203F\u25D5\uFF61)", :status => 500
+        render :text => "Error answering the question. The requested client was not found.", :status => 404
       end
     else
       render :text => "Error answering the question. The requested answer option not found.", :status => 404
@@ -35,7 +61,17 @@ class AssessmentsController < ApplicationController
       redirect_to assessments_url and return
     end
 
-    if !@assessment.complete?(@current_user)
+    @client = User.find_by_id(params[:client_id])
+
+    if @client.nil? or @current_user.clients.index(@client).nil?
+      flash[:type] = "error"
+
+      flash[:notice] = "Error: The specified client does not exist."
+
+      redirect_to assessments_url and return
+    end
+
+    if !@assessment.complete?(@client)
       flash[:type] = "error"
 
       flash[:notice] = t "flash.assessment.error.not_completed"

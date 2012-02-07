@@ -1,17 +1,22 @@
 <h1>Welcome Back <%= @current_user.first_name %>!</h1>
-<h2>Assessments You've Started</h2>
-<ul class="assessment-list">
-  <% Assessment.all.each do |assessment| %>
-    <% if assessment.started?(@current_user) and !assessment.complete?(@current_user) %>
-      <li><%= link_to assessment.title, assessment %></li>
-    <% end %>
-  <% end %>
-</ul>
-<h2>Assessments You've Completed</h2>
-<ul class="assessment-list">
-  <% Assessment.all.each do |assessment| %>
-    <% if assessment.complete?(@current_user) %>
-      <li><%= link_to assessment.title, results_assessment_path(assessment) %></li>
-    <% end %>
-  <% end %>
-</ul>
+<% @current_user.clients.each do |client| %>
+  <div id="client-<%= client.id %>" class="client">
+    <h2><%= client.company_name %></h2>
+    <h3>Assessments Started</h3>
+    <ul class="assessment-list">
+      <% @assessments.each do |assessment| %>
+        <% if assessment.started?(client) and !assessment.complete?(client) %>
+          <li><%= link_to assessment.title, assessment_path(assessment, :client_id => client.id) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <h3>Assessments Completed</h3>
+    <ul class="assessment-list">
+      <% @assessments.each do |assessment| %>
+        <% if assessment.complete?(client) %>
+          <li><%= link_to assessment.title, results_assessment_path(assessment, :client_id => client.id) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

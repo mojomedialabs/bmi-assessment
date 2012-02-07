@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206234149) do
+ActiveRecord::Schema.define(:version => 20111220202036) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                  :null => false
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20111206234149) do
     t.string   "city"
     t.string   "zipcode"
     t.string   "state"
+    t.integer  "facilitator_id"
   end
 
   create_table "versions", :force => true do |t|

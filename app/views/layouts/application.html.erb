@@ -25,7 +25,7 @@
         <ul>
           <% if @current_user %>
             <li><%= link_to "Logout", logout_path %></li>
-            <% if @current_user.privilege_level >= User::PrivilegeLevelAdmin %>
+            <% if @current_user.privilege_level >= User::PrivilegeLevelFacilitator %>
               <li><%= link_to "Admin Panel", admin_root_path %></li>
             <% end %>
             <li><%= link_to "Edit Profile", edit_user_path(@current_user) %></li>

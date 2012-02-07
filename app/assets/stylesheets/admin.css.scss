@@ -5,6 +5,138 @@
 
 @charset "utf-8";
 
+@font-face {
+  font-family: "PTSans";
+  src: font-url("PTSans/PTS55F-webfont.eot");
+  src: font-url("PTSans/PTS55F-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("PTSans/PTS55F-webfont.woff") format("woff"),
+       font-url("PTSans/PTS55F-webfont.ttf") format("truetype"),
+       font-url("PTSans/PTS55F-webfont.svg#PTSansItalic") format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: font-url("PTSans/PTS56F-webfont.eot");
+  src: font-url("PTSans/PTS56F-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("PTSans/PTS56F-webfont.woff") format("woff"),
+       font-url("PTSans/PTS56F-webfont.ttf") format("truetype"),
+       font-url("PTSans/PTS56F-webfont.svg#PTSansItalic") format("svg");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: font-url("PTSans/PTS75F-webfont.eot");
+  src: font-url("PTSans/PTS75F-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("PTSans/PTS75F-webfont.woff") format("woff"),
+       font-url("PTSans/PTS75F-webfont.ttf") format("truetype"),
+       font-url("PTSans/PTS75F-webfont.svg#PTSansBold") format("svg");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: font-url("PTSans/PTS76F-webfont.eot");
+  src: font-url("PTSans/PTS76F-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("PTSans/PTS76F-webfont.woff") format("woff"),
+       font-url("PTSans/PTS76F-webfont.ttf") format("truetype"),
+       font-url("PTSans/PTS76F-webfont.svg#PTSansBoldItalic") format("svg");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "DejaVuSerif";
+  src: font-url("DejaVuSerif/DejaVuSerif-webfont.eot");
+  src: font-url("DejaVuSerif/DejaVuSerif-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("DejaVuSerif/DejaVuSerif-webfont.woff") format("woff"),
+       font-url("DejaVuSerif/DejaVuSerif-webfont.ttf") format("truetype"),
+       font-url("DejaVuSerif/DejaVuSerif-webfont.svg#DejaVuSerif") format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DejaVuSerif";
+  src: font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.eot");
+  src: font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.woff") format("woff"),
+       font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.ttf") format("truetype"),
+       font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.svg#DejaVuSerifItalic") format("svg");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "DejaVuSerif";
+  src: font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.eot");
+  src: font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.woff") format("woff"),
+       font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.ttf") format("truetype"),
+       font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.svg#DejaVuSerifBold") format("svg");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DejaVuSerif";
+  src: font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.eot");
+  src: font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.woff") format("woff"),
+       font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.ttf") format("truetype"),
+       font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.svg#DejaVuSerifBoldItalic") format("svg");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GentiumBasic";
+  src: font-url("GentiumBasic/GenBasR-webfont.eot");
+  src: font-url("GentiumBasic/GenBasR-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("GentiumBasic/GenBasR-webfont.woff") format("woff"),
+       font-url("GentiumBasic/GenBasR-webfont.ttf") format("truetype"),
+       font-url("GentiumBasic/GenBasR-webfont.svg#GentiumBasic") format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GentiumBasic";
+  src: font-url("GentiumBasic/GenBasI-webfont.eot");
+  src: font-url("GentiumBasic/GenBasI-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("GentiumBasic/GenBasI-webfont.woff") format("woff"),
+       font-url("GentiumBasic/GenBasI-webfont.ttf") format("truetype"),
+       font-url("GentiumBasic/GenBasI-webfont.svg#GentiumBasicItalic") format("svg");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GentiumBasic";
+  src: font-url("GentiumBasic/GenBasB-webfont.eot");
+  src: font-url("GentiumBasic/GenBasB-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("GentiumBasic/GenBasB-webfont.woff") format("woff"),
+       font-url("GentiumBasic/GenBasB-webfont.ttf") format("truetype"),
+       font-url("GentiumBasic/GenBasB-webfont.svg#GentiumBasicBold") format("svg");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GentiumBasic";
+  src: font-url("GentiumBasic/GenBasBI-webfont.eot");
+  src: font-url("GentiumBasic/GenBasBI-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("GentiumBasic/GenBasBI-webfont.woff") format("woff"),
+       font-url("GentiumBasic/GenBasBI-webfont.ttf") format("truetype"),
+       font-url("GentiumBasic/GenBasBI-webfont.svg#GentiumBasicBoldItalic") format("svg");
+  font-weight: 700;
+  font-style: italic;
+}
+
 /* Begin Main Page Styles */
 
 body {

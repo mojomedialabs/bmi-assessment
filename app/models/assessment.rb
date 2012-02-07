@@ -24,6 +24,8 @@ class Assessment < ActiveRecord::Base
     :presence => true,
     :numericality => true
 
+  scope :published, lambda { where("assessments.published >= ?", 1) }
+
   def initialize_defaults
     self.display_order ||= 0
     self.status ||= 0
@@ -75,6 +77,16 @@ class Assessment < ActiveRecord::Base
     end
 
     self.sections.inject(0) { |sum, section| sum + section.score(user) }
+  end
+
+  def min_score
+    min = 0
+
+    self.sections.each do |section|
+      min += section.min_score
+    end
+
+    min
   end
 
   def max_score

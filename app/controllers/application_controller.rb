@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def is_moderator?
+  def is_facilitator?
     if @current_user.nil?
       flash[:type] = "attention"
 
@@ -36,12 +36,16 @@ class ApplicationController < ActionController::Base
       redirect_to root_url and return
     end
 
-    if @current_user.privilege_level < User::PrivilegeLevelModerator
+    if @current_user.privilege_level < User::PrivilegeLevelFacilitator
       flash[:type] = "attention"
 
       flash[:notice] = t "flash.access.not_authorized"
 
-      redirect_to :back and return
+      begin
+        redirect_to :back and return
+      rescue ActionController::RedirectBackError
+        redirect_to root_url and return
+      end
     end
   end
 
@@ -59,7 +63,11 @@ class ApplicationController < ActionController::Base
 
       flash[:notice] = t "flash.access.not_authorized"
 
-      redirect_to :back and return
+      begin
+        redirect_to :back and return
+      rescue ActionController::RedirectBackError
+        redirect_to root_url and return
+      end
     end
   end
 
@@ -77,12 +85,16 @@ class ApplicationController < ActionController::Base
 
       flash[:notice] = t "flash.access.not_authorized"
 
-      redirect_to :back and return
+      begin
+        redirect_to :back and return
+      rescue ActionController::RedirectBackError
+        redirect_to root_url and return
+      end
     end
   end
 
   def validation_errors_for(object)
-    "<ul>" + object.errors.map {|attribute, message| "<li>#{t("flash.error") + object.class.human_attribute_name("#{attribute.to_s}")} #{message}.</li>"}.to_s + "</ul>"
+    "<ul>" + object.errors.map {|attribute, message| "<li>#{t("flash.error") + object.class.human_attribute_name("#{attribute.to_s}")} #{message}.</li>"}.join("") + "</ul>"
   end
 
   private

@@ -1,6 +1,8 @@
 class Admin::AssessmentsController < Admin::AdminController
   helper_method :sort_column, :sort_order
 
+  before_filter :is_admin?
+
   def index
     @assessments = Assessment.search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
   end

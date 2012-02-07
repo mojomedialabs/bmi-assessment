@@ -121,6 +121,7 @@ en:
           top_and_bottom_order: "upper end must be greater than the lower end"
         user:
           confirmation: "does not match the confirmation"
+          facilitator_must_exist: "must reference an existing page"
           taken: "is already in use by another user"
           attributes:
             email_address:

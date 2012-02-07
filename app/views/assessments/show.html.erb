@@ -1,9 +1,11 @@
 <h1><%= @assessment.title %></h1>
 <%= form_tag update_response_assessment_path, :method => "post" do %>
+  <%= hidden_field_tag "client_id", @client.id %>
   <% @assessment.sections.each do |section| %>
     <%= render "section", :section => section %>
   <% end %>
 <% end %>
 <%= form_tag results_assessment_path(@assessment), :method => "get" do %>
+  <%= hidden_field_tag "client_id", @client.id %>
   <%= submit_tag "Get Results" %>
 <% end %>

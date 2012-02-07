@@ -25,23 +25,24 @@
         <ul>
           <li><%= link_to "Admin Home", admin_root_path, :class => is_current_controller?("admin/admin") %></li>
           <li><%= link_to User.model_name.human.pluralize, admin_users_path, :class => is_current_controller?("admin/users") %></li>
-          <li><%= link_to Page.model_name.human.pluralize, admin_pages_path, :class => is_current_controller?("admin/pages") %></li>
-          <li style="display: none;"><%= link_to Post.model_name.human.pluralize, admin_posts_path, :class => is_current_controller?("admin/posts") %></li>
-          <li><%= link_to Picture.model_name.human.pluralize, admin_pictures_path, :class => is_current_controller?("admin/pictures") %></li>
-          <li><%= link_to Assessment.model_name.human.pluralize, admin_assessments_path, :class => is_current_controller?("admin/assessments") %></li>
-          <li><%= link_to "Site Home", root_path %></li>
+					<% if @current_user.privilege_level >= User::PrivilegeLevelAdmin %>
+          	<li><%= link_to Page.model_name.human.pluralize, admin_pages_path, :class => is_current_controller?("admin/pages") %></li>
+          	<li><%= link_to Picture.model_name.human.pluralize, admin_pictures_path, :class => is_current_controller?("admin/pictures") %></li>
+          	<li><%= link_to Assessment.model_name.human.pluralize, admin_assessments_path, :class => is_current_controller?("admin/assessments") %></li>
+          <% end %>
+					<li><%= link_to "Site Home", root_path %></li>
         </ul>
       </nav>
     </header>
     <div class="content">
       <% if flash[:notice] %>
         <div id="flash-notice" class="notification <%= flash[:type] %> click-to-close">
-          <div><%= raw flash[:notice] %></div>
+          <div><%= flash[:notice].html_safe %></div>
         </div>
       <% end %>
       <% if flash[:debug] %>
         <div id="flash-debug" class="notification information click-to-close">
-          <div><%= raw debug flash[:debug] %></div>
+          <div><%= debug flash[:debug].html_safe %></div>
         </div>
       <% end %>
       <%= yield %>

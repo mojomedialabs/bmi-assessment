@@ -1,10 +1,14 @@
 <h1>Assessments</h1>
-<p>Here is a complete list of all assessments available to you including ones you have started and completed. Assessments marked as complete may be revisited and their answers revised.</p>
-<% Assessment.all.each do |assessment| %>
-  <div class="assessment">
-    <h2><%= link_to assessment.title, assessment %></h2>
-    <div class="assessment-status"><strong>Status:</strong> <%= get_status(assessment) %></div>
-    <div class="assessment-description"><%= raw assessment.description %></div>
+<% @current_user.clients.each do |client| %>
+  <div id="client-<%= client.id %>" class="client">
+    <h2><%= client.company_name %></h2>
+    <% @assessments.each do |assessment| %>
+      <div class="assessment">
+        <h3><%= link_to assessment.title, assessment_path(assessment, :client_id => client.id) %></h3>
+        <div class="assesment-status"><strong>Status:</strong> <%= get_status(client, assessment) %></div>
+        <div class="assessment-description"><%= raw assessment.description %></div>
+      </div>
+    <% end %>
+    <p><%= link_to "Click here for a printable summary of all assessments #{client.company_name} has completed.", summary_assessments_path(:client_id => client.id) %></p>
   </div>
 <% end %>
-<p><%= link_to "Click here for a printable summary of all assessments you've completed.", summary_assessments_path %></p>

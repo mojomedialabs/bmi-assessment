@@ -1,43 +1,52 @@
 <div id="assessment-<%= assessment.id %>-result" class="assessment-result print-page">
   <div class="assessment-score"><%= assessment.score(user) %></div>
+  <div class="assessment-min-score"><%= assessment.min_score %></div>
   <div class="assessment-max-score"><%= assessment.max_score %></div>
-  <div class="assessment-cover-page print-page">
-    <h1 style="text-align: center;"><%= assessment.title %> Results</h1>
-    <h2>Overall</h2>
-    <div class="cover-page-assessment-graph">
-      <canvas class="assessment-cover-page-overall-graph-canvas" height="100px" width="600px"></canvas>
+  <div class="cover-page print-page">
+    <div class="assessment-title"><%= assessment.title %></div>
+    <div class="sections">
+      <% assessment.sections.each do |section| %>
+        <div class="section">
+          <div class="section-title"><%= section.title %></div>
+          <div class="section-score"><%= section.score(user) %></div>
+          <div class="section-min-score"><%= section.min_score %></div>
+          <div class="section-max-score"><%= section.max_score %></div>
+        </div>
+      <% end %>
     </div>
-    <% assessment.sections.each do |section| %>
-      <h2><%= section.title %>
-      <div class="cover-page-section-graph">
-        <div class="section-score"><%= section.score(user) %></div>
-        <div class="section-max-score"><%= section.max_score %></div>
-        <canvas class="assessment-cover-page-section-graph-canvas" height="50px" width="300px"></canvas>
-      </div>
-    <% end %>
+    <div style="margin: 0 auto; width: 900px;">
+      <canvas class="cover-page-graph" height="<%= ((assessment.sections.length * 50) + 500 ).to_s %>px" width="900px"></canvas>
+    </div>
   </div>
-  <div class="assessment-executive-summary">
-    <h2>Executive Summary</h2>
+  <div class="assessment-executive-summary print-page">
+    <h1>Executive Summary</h1>
       <% unless assessment.executive_summary.blank? %>
         <%= assessment.executive_summary.gsub(/\[Company Name\]/, user.company_name).gsub(/\[Company Nickname\]/, user.company_name).html_safe %>
       <% end %>
   </div>
-  <div class="assessment-overall-result">
-    <h2>Overall Results</h2>
-    <div class="assessment-graph">
+  <div class="assessment-overall-result print-page">
+    <h1>Overall Results</h1>
+    <!--<div class="assessment-graph">
       <canvas class="assessment-graph-canvas" height="100px" width="600px"></canvas>
-    </div>
-    <%= get_result(assessment) %>
+    </div>-->
+    <%= get_result(assessment, user) %>
   </div>
   <% assessment.sections.each do |section| %>
-    <div class="section-result">
+    <div id="section-<% section.id %>-result" class="section-result print-page">
+      <div class="section-top">
+
+      </div>
+      <!--<div class="gauge-image">
+        <%= image_tag("gauge.png") %>
+      </div>-->
       <div class="section-score"><%= section.score(user) %></div>
       <div class="section-max-score"><%= section.max_score %></div>
-      <h2><%= section.title %></h2>
-      <div class="section-graph">
+      <h1><%= section.title %></h1>
+      <!--<div class="section-graph">
         <canvas class="section-graph-canvas" height="100px" width="600px"></canvas>
-      </div>
-      <%= get_result(section) %>
+      </div>-->
+
+      <%= get_result(section, user) %>
     </div>
   <% end %>
 </div>

@@ -108,10 +108,26 @@
         <%= f.label :phone_number, "Phone Number:" %><br />
         <%= f.text_field :phone_number, :class => "small" %>
       </p>
-      <div>
-        <%= f.label :privilege_level, "Privilege Level:" %><br />
-        <%= f.select :privilege_level, get_valid_privilege_levels, {}, :class => "small" %>
-      </div>
+      <% unless @user && @user == @current_user %>
+        <% if @current_user.privilege_level < User::PrivilegeLevelAdmin %>
+          <%= f.hidden_field :privilege_level, :value => 1 %>
+        <% else %>
+          <div>
+            <%= f.label :privilege_level, "Privilege Level:" %><br />
+            <%= f.select :privilege_level, get_valid_privilege_levels, {}, :class => "small" %>
+          </div>
+        <% end %>
+      <% end %>
+      <% if @user && @user.privilege_level >= User::PrivilegeLevelFacilitator %>
+        <%= f.hidden_field :facilitator_id, :value => nil %>
+      <% elsif @current_user.privilege_level == User::PrivilegeLevelFacilitator %>
+        <%= f.hidden_field :facilitator_id, :value => @current_user.id %>
+      <% else %>
+        <div>
+          <%= f.label :facilitator_id, "Facilitator" %><br />
+          <%= f.collection_select :facilitator_id, User.facilitators, :id, :full_name, :include_blank => "Please Select", :class => "small" %>
+        </div>
+      <% end %>
       <div>
         <%= submit_tag "Submit" %>
       </div>

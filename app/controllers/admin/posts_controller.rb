@@ -1,6 +1,8 @@
 class Admin::PostsController < Admin::AdminController
   helper_method :sort_column, :sort_order
 
+  before_filter :is_admin?
+
   def index
     @posts = Post.search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
   end

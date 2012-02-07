@@ -1,8 +1,8 @@
 module AssessmentsHelper
-  def get_status(assessment)
-    if assessment.complete?(@current_user)
-      return ("Completed! " + link_to("View Results", results_assessment_path(assessment))).html_safe
-    elsif assessment.started?(@current_user)
+  def get_status(user, assessment)
+    if assessment.complete?(user)
+      return ("Completed! " + link_to("View Results", results_assessment_path(assessment, :client_id => user))).html_safe
+    elsif assessment.started?(user)
       return "Started".html_safe
     else
       return "Not Started".html_safe
@@ -10,19 +10,19 @@ module AssessmentsHelper
   end
 
   def check_answer(answer_id)
-    response = @current_user.responses.detect { |response| response.answer_id == answer_id }
+    response = @client.responses.detect { |response| response.answer_id == answer_id }
 
     return !response.nil?
   end
 
-  def get_result(assessment)
+  def get_result(assessment, user)
     assessment_result = ""
 
-    assessment_score = assessment.score(@current_user)
+    assessment_score = assessment.score(user)
 
     assessment.results.each do |result|
       if assessment_score >= result.bottom and assessment_score <= result.top
-        assessment_result += result.content.gsub(/\[Company Name\]/, @current_user.company_name).gsub(/\[Company Nickname\]/, @current_user.company_name)
+        assessment_result += result.content.gsub(/\[Company Name\]/, user.company_name).gsub(/\[Company Nickname\]/, user.company_name)
 
         break
       end

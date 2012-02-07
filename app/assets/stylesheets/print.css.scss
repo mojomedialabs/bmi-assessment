@@ -5,6 +5,142 @@
 
 @charset "utf-8";
 
+@font-face {
+  font-family: "PTSans";
+  src: font-url("PTSans/PTS55F-webfont.eot");
+  src: font-url("PTSans/PTS55F-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("PTSans/PTS55F-webfont.woff") format("woff"),
+       font-url("PTSans/PTS55F-webfont.ttf") format("truetype"),
+       font-url("PTSans/PTS55F-webfont.svg#PTSansItalic") format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: font-url("PTSans/PTS56F-webfont.eot");
+  src: font-url("PTSans/PTS56F-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("PTSans/PTS56F-webfont.woff") format("woff"),
+       font-url("PTSans/PTS56F-webfont.ttf") format("truetype"),
+       font-url("PTSans/PTS56F-webfont.svg#PTSansItalic") format("svg");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: font-url("PTSans/PTS75F-webfont.eot");
+  src: font-url("PTSans/PTS75F-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("PTSans/PTS75F-webfont.woff") format("woff"),
+       font-url("PTSans/PTS75F-webfont.ttf") format("truetype"),
+       font-url("PTSans/PTS75F-webfont.svg#PTSansBold") format("svg");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: font-url("PTSans/PTS76F-webfont.eot");
+  src: font-url("PTSans/PTS76F-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("PTSans/PTS76F-webfont.woff") format("woff"),
+       font-url("PTSans/PTS76F-webfont.ttf") format("truetype"),
+       font-url("PTSans/PTS76F-webfont.svg#PTSansBoldItalic") format("svg");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "DejaVuSerif";
+  src: font-url("DejaVuSerif/DejaVuSerif-webfont.eot");
+  src: font-url("DejaVuSerif/DejaVuSerif-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("DejaVuSerif/DejaVuSerif-webfont.woff") format("woff"),
+       font-url("DejaVuSerif/DejaVuSerif-webfont.ttf") format("truetype"),
+       font-url("DejaVuSerif/DejaVuSerif-webfont.svg#DejaVuSerif") format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DejaVuSerif";
+  src: font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.eot");
+  src: font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.woff") format("woff"),
+       font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.ttf") format("truetype"),
+       font-url("DejaVuSerif/DejaVuSerif-Italic-webfont.svg#DejaVuSerifItalic") format("svg");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "DejaVuSerif";
+  src: font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.eot");
+  src: font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.woff") format("woff"),
+       font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.ttf") format("truetype"),
+       font-url("DejaVuSerif/DejaVuSerif-Bold-webfont.svg#DejaVuSerifBold") format("svg");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DejaVuSerif";
+  src: font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.eot");
+  src: font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.woff") format("woff"),
+       font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.ttf") format("truetype"),
+       font-url("DejaVuSerif/DejaVuSerif-BoldItalic-webfont.svg#DejaVuSerifBoldItalic") format("svg");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GentiumBasic";
+  src: font-url("GentiumBasic/GenBasR-webfont.eot");
+  src: font-url("GentiumBasic/GenBasR-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("GentiumBasic/GenBasR-webfont.woff") format("woff"),
+       font-url("GentiumBasic/GenBasR-webfont.ttf") format("truetype"),
+       font-url("GentiumBasic/GenBasR-webfont.svg#GentiumBasic") format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GentiumBasic";
+  src: font-url("GentiumBasic/GenBasI-webfont.eot");
+  src: font-url("GentiumBasic/GenBasI-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("GentiumBasic/GenBasI-webfont.woff") format("woff"),
+       font-url("GentiumBasic/GenBasI-webfont.ttf") format("truetype"),
+       font-url("GentiumBasic/GenBasI-webfont.svg#GentiumBasicItalic") format("svg");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GentiumBasic";
+  src: font-url("GentiumBasic/GenBasB-webfont.eot");
+  src: font-url("GentiumBasic/GenBasB-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("GentiumBasic/GenBasB-webfont.woff") format("woff"),
+       font-url("GentiumBasic/GenBasB-webfont.ttf") format("truetype"),
+       font-url("GentiumBasic/GenBasB-webfont.svg#GentiumBasicBold") format("svg");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GentiumBasic";
+  src: font-url("GentiumBasic/GenBasBI-webfont.eot");
+  src: font-url("GentiumBasic/GenBasBI-webfont.eot?#iefix") format("embedded-opentype"),
+       font-url("GentiumBasic/GenBasBI-webfont.woff") format("woff"),
+       font-url("GentiumBasic/GenBasBI-webfont.ttf") format("truetype"),
+       font-url("GentiumBasic/GenBasBI-webfont.svg#GentiumBasicBoldItalic") format("svg");
+  font-weight: 700;
+  font-style: italic;
+}
+
+body {
+  font-family: "DejaVuSerif", serif;
+}
+
 .do-not-print {
   display: none;
 }
@@ -19,12 +155,76 @@ header#main-header {
 
 /* Begin Assessment Results */
 
-.assessment-score {
-  display: none;
-}
-
-.assessment-max-score {
-  display: none;
+.assessment-result {
+  font-family: "PTSans", sans-serif;
+  font-size: 10pt;
+  .assessment-score {
+    display: none;
+  }
+  .assessment-min-score {
+    display: none;
+  }
+  .assessment-max-score {
+    display: none;
+  }
+  .cover-page {
+    .assessment-title {
+      display: none;
+    }
+    .sections {
+      display: none;
+    }
+  }
+  h1 {
+    color: #177cbf;
+    font-size: 26px;
+    text-transform: uppercase;
+  }
+  h2 {
+    color: #177cbf;
+    font-size: 18pt;
+    font-style: italic;
+  }
+  h2.low {
+    color: #c00000;
+    font-size: 16pt;
+  }
+  h2.average {
+    color: #faa51a;
+    font-size: 16pt;
+  }
+  h2.high {
+    color: #008000;
+    font-size: 16pt;
+  }
+  h3 {
+    color: #177cbf;
+    font-size: 16pt;
+  }
+  img.left {
+    float: left;
+    margin-right: 10px;
+  }
+  img.right {
+    float: right;
+    margin-left: 10px;
+  }
+  img.thumbnail {
+    max-width: 300px;
+  }
+  .assessment-overall-result {
+    h1 {
+      text-align: center;
+    }
+  }
+  .section-result {
+    .section-status {
+      color: #177cbf;
+      font-size: 10pt;
+      font-style: italic;
+      font-weight: bold;
+    }
+  }
 }
 
 .assessment-graph {
@@ -43,4 +243,19 @@ header#main-header {
   text-align: center;
 }
 
+.gauge-image {
+  img {
+    float: right;
+    width: 150px;
+  }
+}
+
+
+
+
 /* End Assessment Results */
+
+#main-footer {
+  font-size: 14pt;
+  text-align: center;
+}

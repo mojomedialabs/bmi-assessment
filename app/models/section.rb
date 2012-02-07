@@ -31,7 +31,7 @@ class Section < ActiveRecord::Base
       end
     end
 
-    return true
+    return false
   end
 
   def complete?(user)
@@ -54,6 +54,16 @@ class Section < ActiveRecord::Base
     end
 
     self.questions.inject(0) { |sum, question| sum + question.response_weight(user) }
+  end
+
+  def min_score
+    min = 0
+
+    self.questions.each do |question|
+      min += question.min_score
+    end
+
+    min
   end
 
   def max_score

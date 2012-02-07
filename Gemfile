@@ -47,3 +47,5 @@ gem 'nokogiri'
 gem 'paper_trail'
 
 gem 'rmagick'
+
+gem 'yaml_db'

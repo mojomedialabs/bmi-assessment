@@ -3,6 +3,8 @@ class PagesController < ApplicationController
     unless @current_user
       render :login
     end
+
+    @assessments = Assessment.all
   end
 
   def show
