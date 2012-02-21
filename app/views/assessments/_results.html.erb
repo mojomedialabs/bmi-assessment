@@ -1,8 +1,11 @@
 <div id="assessment-<%= assessment.id %>-result" class="assessment-result print-page">
+  <div class="cover-page print-page">
+    <%= assessment.cover_page.html_safe %>
+  </div>
   <div class="assessment-score"><%= assessment.score(user) %></div>
   <div class="assessment-min-score"><%= assessment.min_score %></div>
   <div class="assessment-max-score"><%= assessment.max_score %></div>
-  <div class="cover-page print-page">
+  <div class="results-page print-page">
     <div class="assessment-title"><%= assessment.title %></div>
     <div class="sections">
       <% assessment.sections.each do |section| %>
@@ -15,7 +18,7 @@
       <% end %>
     </div>
     <div style="margin: 0 auto; width: 900px;">
-      <canvas class="cover-page-graph" height="<%= ((assessment.sections.length * 50) + 500 ).to_s %>px" width="900px"></canvas>
+      <canvas class="results-page-graph" height="<%= ((assessment.sections.length * 50) + 500 ).to_s %>px" width="900px"></canvas>
     </div>
   </div>
   <div class="assessment-executive-summary print-page">
@@ -26,26 +29,15 @@
   </div>
   <div class="assessment-overall-result print-page">
     <h1>Overall Results</h1>
-    <!--<div class="assessment-graph">
-      <canvas class="assessment-graph-canvas" height="100px" width="600px"></canvas>
-    </div>-->
     <%= get_result(assessment, user) %>
   </div>
   <% assessment.sections.each do |section| %>
     <div id="section-<% section.id %>-result" class="section-result print-page">
       <div class="section-top">
-
       </div>
-      <!--<div class="gauge-image">
-        <%= image_tag("gauge.png") %>
-      </div>-->
       <div class="section-score"><%= section.score(user) %></div>
       <div class="section-max-score"><%= section.max_score %></div>
       <h1><%= section.title %></h1>
-      <!--<div class="section-graph">
-        <canvas class="section-graph-canvas" height="100px" width="600px"></canvas>
-      </div>-->
-
       <%= get_result(section, user) %>
     </div>
   <% end %>

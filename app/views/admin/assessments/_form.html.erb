@@ -21,7 +21,18 @@
         <%= f.label :status, "Status:" %><br />
         <%= f.select :status, [['Published', 1], ['Draft', 0], ['Awaiting Review', 2]], {}, :class => "small" %>
       </div>
-      <div style="clear: both;"></div>
+      <div style="clear: both;">
+        <%= f.label :cover_page, "Cover Page" %><br />
+        <%= f.text_area :cover_page, :class => "large" %>
+      </div>
+      <div>
+        <%= f.label :executive_summary, "Executive Summary" %><br />
+        <%= f.text_area :executive_summary, :class => "large" %>
+      </div>
+      <div>
+        <button id="picture-selector-button" name="picture-selector-button">Select Picture</button>
+      </div>
+      <div>
       <%= f.fields_for :sections do |builder| %>
         <%= render "section_fields", :f => builder %>
       <% end %>
@@ -33,13 +44,6 @@
       <% end %>
       <div style="margin-top: 10px;">
         <%= link_to_add_fields "Add Result to Assessment", f, :results %>
-      </div>
-      <div>
-        <%= f.label :executive_summary, "Executive Summary" %><br />
-        <%= f.text_area :executive_summary, :class => "large" %>
-      </div>
-      <div>
-        <button id="picture-selector-button" name="picture-selector-button">Select Picture</button>
       </div>
       <div>
         <%= f.submit "Submit", :id => "assessment-submit" %>

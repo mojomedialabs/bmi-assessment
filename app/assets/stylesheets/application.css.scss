@@ -417,7 +417,7 @@ p#login-intro {
   .assessment-max-score {
     display: none;
   }
-  .cover-page {
+  .results-page {
     .assessment-title {
       display: none;
     }
@@ -494,13 +494,6 @@ p#login-intro {
 
 .section-graph {
   text-align: center;
-}
-
-.gauge-image {
-  img {
-    float: right;
-    width: 150px;
-  }
 }
 
 /* End Assessment Results */

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220202036) do
+ActiveRecord::Schema.define(:version => 20120216210952) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                  :null => false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20111220202036) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "executive_summary"
+    t.text     "cover_page"
   end
 
   create_table "pages", :force => true do |t|

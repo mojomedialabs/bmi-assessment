@@ -243,19 +243,16 @@ header#main-header {
   text-align: center;
 }
 
-.gauge-image {
-  img {
-    float: right;
-    width: 150px;
+/* End Assessment Results */
+
+/* Begin Main Footer */
+
+#main-footer {
+  margin-top: 65px;
+  text-align: center;
+  #mojo {
+    font-size: 14px;
   }
 }
 
-
-
-
-/* End Assessment Results */
-
-#main-footer {
-  font-size: 14pt;
-  text-align: center;
-}
+/* End Main Footer */
