@@ -1,5 +1,6 @@
 $(function() {
-	var backgroundColors = [ "#be2025", "#ed2024", "#ef4b23", "#faa41a", "#fdd803", "#f3ec1a", "#b3d334", "#61bc46", "#549140", "#166432" ];
+	//var backgroundColors = [ "#be2025", "#ed2024", "#ef4b23", "#faa41a", "#fdd803", "#f3ec1a", "#b3d334", "#61bc46", "#549140", "#166432" ];
+	var backgroundColors = [ "#de3b40", "#f15558", "#f27454", "#fbb84b", "#fde249", "#f7f269", "#c8df6d", "#89cd74", "#79bb63", "#39a561" ];
 
 	$(".results-page").each(function() {
 		var assessmentTitle = $(this).find(".assessment-title").text();

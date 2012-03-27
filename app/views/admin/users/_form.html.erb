@@ -125,7 +125,7 @@
       <% else %>
         <div>
           <%= f.label :facilitator_id, "Facilitator" %><br />
-          <%= f.collection_select :facilitator_id, User.facilitators, :id, :full_name, :include_blank => "Please Select", :class => "small" %>
+          <%= f.collection_select :facilitator_id, User.where("privilege_level = 2"), :id, :full_name, :include_blank => "Please Select", :class => "small" %>
         </div>
       <% end %>
       <div>

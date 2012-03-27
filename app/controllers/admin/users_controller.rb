@@ -5,7 +5,7 @@ class Admin::UsersController < Admin::AdminController
 
   def index
     if @current_user.is_facilitator?
-      @users = User.where("facilitator_id == ?", @current_user.id).search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
+      @users = User.where("facilitator_id = ?", @current_user.id).search(params[:search]).page(params[:page]).order(sort_column + " " + sort_order)
 
       @users << @current_user
     else
